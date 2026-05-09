@@ -5,18 +5,24 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>SignBridge | Nuha Rilwan</title>
 
-  <link rel="stylesheet" href="css/variables.css">
-  <link rel="stylesheet" href="css/styles.css">
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
-
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
 
+<!-- SCROLL PROGRESS -->
+<div class="scroll-progress" id="scrollProgress"></div>
+
+<!-- CUSTOM CURSOR -->
+<div class="cursor-dot"  id="cursorDot"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
 <!-- NAV -->
-<nav class="navbar">
+<nav class="navbar" id="navbar">
   <div class="nav-left">
+    <div class="nav-monogram">NR</div>
     <div class="nav-text">
       <h1>Nuha Rilwan</h1>
       <p>Software Engineer</p>
@@ -26,6 +32,7 @@
     <li><a href="index.html#about">About</a></li>
     <li><a href="index.html#projects">Projects</a></li>
     <li><a href="index.html#skills">Skills</a></li>
+    <li><a href="index.html#contact">Contact</a></li>
   </ul>
 </nav>
 
@@ -44,17 +51,16 @@
       Real-time sign language translation bridging communication between the hearing and deaf communities through gesture-based AI.
     </p>
     <div class="header-meta">
-      <span class="meta-chip"><i class="fa-solid fa-users"></i> Group Project</span>
+      <span class="meta-chip"><i class="fa-solid fa-user"></i> Group Project</span>
       <span class="meta-chip"><i class="fa-solid fa-calendar"></i> 2025</span>
-      <span class="meta-chip"><i class="fa-solid fa-graduation-cap"></i> Final Year</span>
+      <span class="meta-chip"><i class="fa-solid fa-graduation-cap"></i> First Year Project</span>
     </div>
   </div>
 
   <!-- ROW 1: Description + Skills -->
-  <div class="detail-grid" style="margin-bottom:24px;">
+  <div class="detail-grid">
 
-    <!-- DESCRIPTION -->
-    <div class="detail-card desc-card">
+    <div class="detail-card desc-card reveal">
       <div class="card-label"><i class="fa-solid fa-file-lines"></i> About the Project</div>
       <p>
         SignBridge is a real-time sign language translation system developed as a final-year group project. The system uses a CNN-based gesture recognition model to detect and interpret hand signs captured through a live camera feed.
@@ -67,11 +73,11 @@
       </p>
     </div>
 
-    <!-- SKILLS LEARNED -->
-    <div class="detail-card">
+    <div class="detail-card reveal reveal-delay-1">
       <div class="card-label"><i class="fa-solid fa-lightbulb"></i> Skills Learned</div>
       <div class="skills-grid">
         <div class="skill-pill"><i class="fa-brands fa-python"></i> Python</div>
+        <div class="skill-pill"><i class="fa-solid fa-server"></i> Backend</div>
         <div class="skill-pill"><i class="fa-solid fa-brain"></i> CNN Architecture</div>
         <div class="skill-pill"><i class="fa-solid fa-eye"></i> Computer Vision</div>
         <div class="skill-pill"><i class="fa-solid fa-camera"></i> Real-time Video Feed</div>
@@ -86,81 +92,50 @@
 
   </div>
 
-  <!-- ROW 2: Gallery (full width) -->
-  <!-- <div class="detail-grid single" style="margin-bottom:24px;">
-    <div class="detail-card gallery-card">
-      <div class="card-label"><i class="fa-solid fa-images"></i> UI Screenshots</div>
-      <div class="gallery-grid">
+  <!-- ROW 2: Links + Quick Facts -->
+  <div class="detail-grid reveal reveal-delay-2">
 
-        <div class="gallery-img" onclick="openLightbox(this)">
-          <img src="assets/images/projects/signbridge-ui-1.jpg" alt="SignBridge main interface"
-               onerror="this.parentElement.innerHTML='<div class=\'img-placeholder\'><i class=\'fa-solid fa-image\'></i><span>Main Interface</span></div>'">
-          <div class="img-overlay"><i class="fa-solid fa-expand"></i></div>
-        </div>
-
-        <div class="gallery-img" onclick="openLightbox(this)">
-          <img src="assets/images/projects/signbridge-ui-2.jpg" alt="SignBridge gesture detection"
-               onerror="this.parentElement.innerHTML='<div class=\'img-placeholder\'><i class=\'fa-solid fa-image\'></i><span>Gesture Detection View</span></div>'">
-          <div class="img-overlay"><i class="fa-solid fa-expand"></i></div>
-        </div>
-
-        <div class="gallery-img" onclick="openLightbox(this)">
-          <img src="assets/images/projects/signbridge-ui-3.jpg" alt="SignBridge translation output"
-               onerror="this.parentElement.innerHTML='<div class=\'img-placeholder\'><i class=\'fa-solid fa-image\'></i><span>Translation Output</span></div>'">
-          <div class="img-overlay"><i class="fa-solid fa-expand"></i></div>
-        </div>
-
-      </div>
-    </div>
-  </div> -->
-
-  <!-- ROW 3: Demo Video + Links -->
-  <div class="detail-grid" style="margin-bottom:0;">
-
-    <!-- DEMO VIDEO -->
-    <!-- <div class="detail-card video-card">
-      <div class="card-label"><i class="fa-solid fa-circle-play"></i> Demo Video</div>
-      <div class="video-wrapper">
-        <div class="video-placeholder">
-          <i class="fa-solid fa-circle-play"></i>
-          <p>Demo Video</p>
-          <small>Replace this placeholder with a YouTube embed or local video file</small>
-        </div>
-      </div>
-    </div> -->
-
-    <!-- LINKS -->
-    <div class="detail-card" style="justify-content:flex-start;">
+    <div class="detail-card">
       <div class="card-label"><i class="fa-solid fa-link"></i> Project Links</div>
-      <div class="links-row" style="margin-bottom: 32px;">
+      <div class="links-row" style="margin-bottom: 36px;">
         <a href="https://github.com/nuhaaaaaaa24/SignBridge" target="_blank" class="project-btn primary">
           <i class="fa-brands fa-github"></i> View on GitHub
         </a>
-        <!-- <a href="#" class="project-btn ghost">
-          <i class="fa-solid fa-arrow-up-right-from-square"></i> Live Demo
-        </a> -->
       </div>
 
-      <!-- Extra context section in the same card -->
       <div class="card-label" style="margin-top: 8px;"><i class="fa-solid fa-circle-info"></i> Quick Facts</div>
       <div style="display:flex; flex-direction:column; gap:14px;">
-        <div style="display:flex; justify-content:space-between; align-items:center; padding-bottom:12px; border-bottom: 0.5px solid rgba(131,153,88,0.1);">
-          <span style="font-size:12px; letter-spacing:0.08em; text-transform:uppercase; color:rgba(247,244,213,0.35);">Type</span>
-          <span style="font-size:13px; color:rgba(247,244,213,0.75);">Group Final Year Project</span>
+        <div style="display:flex; justify-content:space-between; align-items:center; padding-bottom:12px; border-bottom: 0.5px solid rgba(122,145,96,0.15);">
+          <span style="font-size:11px; letter-spacing:0.08em; text-transform:uppercase; color:rgba(44,36,32,0.38);">Type</span>
+          <span style="font-size:13px; color:rgba(44,36,32,0.72);">Group Final Year Project</span>
         </div>
-        <div style="display:flex; justify-content:space-between; align-items:center; padding-bottom:12px; border-bottom: 0.5px solid rgba(131,153,88,0.1);">
-          <span style="font-size:12px; letter-spacing:0.08em; text-transform:uppercase; color:rgba(247,244,213,0.35);">Domain</span>
-          <span style="font-size:13px; color:rgba(247,244,213,0.75);">AI / Computer Vision</span>
+        <div style="display:flex; justify-content:space-between; align-items:center; padding-bottom:12px; border-bottom: 0.5px solid rgba(122,145,96,0.15);">
+          <span style="font-size:11px; letter-spacing:0.08em; text-transform:uppercase; color:rgba(44,36,32,0.38);">Domain</span>
+          <span style="font-size:13px; color:rgba(44,36,32,0.72);">AI / Computer Vision</span>
         </div>
-        <div style="display:flex; justify-content:space-between; align-items:center; padding-bottom:12px; border-bottom: 0.5px solid rgba(131,153,88,0.1);">
-          <span style="font-size:12px; letter-spacing:0.08em; text-transform:uppercase; color:rgba(247,244,213,0.35);">Stack</span>
-          <span style="font-size:13px; color:rgba(247,244,213,0.75);">Python · Flask · HTML/CSS</span>
+        <div style="display:flex; justify-content:space-between; align-items:center; padding-bottom:12px; border-bottom: 0.5px solid rgba(122,145,96,0.15);">
+          <span style="font-size:11px; letter-spacing:0.08em; text-transform:uppercase; color:rgba(44,36,32,0.38);">Stack</span>
+          <span style="font-size:13px; color:rgba(44,36,32,0.72);">Python · Flask · HTML · CSS · JavaScript</span>
         </div>
         <div style="display:flex; justify-content:space-between; align-items:center;">
-          <span style="font-size:12px; letter-spacing:0.08em; text-transform:uppercase; color:rgba(247,244,213,0.35);">Focus</span>
-          <span style="font-size:13px; color:rgba(247,244,213,0.75);">Accessibility</span>
+          <span style="font-size:11px; letter-spacing:0.08em; text-transform:uppercase; color:rgba(44,36,32,0.38);">Focus</span>
+          <span style="font-size:13px; color:rgba(44,36,32,0.72);">Accessibility</span>
         </div>
       </div>
+    </div>
+
+    <!-- Next project nudge -->
+    <div class="detail-card" style="display:flex; flex-direction:column; justify-content:center; align-items:flex-start; gap:18px;">
+      <div class="card-label"><i class="fa-solid fa-arrow-right"></i> Next Project</div>
+      <p style="font-size:13px; font-weight:300; color:rgba(44,36,32,0.5); line-height:1.8;">
+        Want to see more? Check out Bookbliss — a book recommendation system built with PHP and Laravel.
+      </p>
+      <a href="project-bookbliss.html" class="project-btn primary">
+        View Bookbliss <i class="fa-solid fa-arrow-right"></i>
+      </a>
+      <a href="index.html#projects" class="project-btn ghost">
+        All Projects
+      </a>
     </div>
 
   </div>
@@ -186,18 +161,45 @@
 </footer>
 
 <script>
-  function openLightbox(el) {
-    const img = el.querySelector('img');
-    if (!img) return;
-    document.getElementById('lightbox-img').src = img.src;
-    document.getElementById('lightbox').classList.add('open');
-  }
-  function closeLightbox() {
-    document.getElementById('lightbox').classList.remove('open');
-  }
-  document.addEventListener('keydown', e => {
-    if (e.key === 'Escape') closeLightbox();
-  });
+/* Custom Cursor */
+const dot  = document.getElementById('cursorDot');
+const ring = document.getElementById('cursorRing');
+let rx = 0, ry = 0;
+document.addEventListener('mousemove', e => {
+  dot.style.left  = e.clientX + 'px';
+  dot.style.top   = e.clientY + 'px';
+  rx += (e.clientX - rx) * 0.12;
+  ry += (e.clientY - ry) * 0.12;
+  ring.style.left = rx + 'px';
+  ring.style.top  = ry + 'px';
+});
+
+/* Scroll Progress */
+const progressBar = document.getElementById('scrollProgress');
+window.addEventListener('scroll', () => {
+  const pct = window.scrollY / (document.body.scrollHeight - window.innerHeight) * 100;
+  progressBar.style.width = pct + '%';
+  document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 80);
+});
+
+/* Scroll Reveal */
+const revealEls = document.querySelectorAll('.reveal');
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+}, { threshold: 0.1 });
+revealEls.forEach(el => obs.observe(el));
+
+/* Lightbox */
+function openLightbox(el) {
+  const img = el.querySelector('img');
+  if (!img) return;
+  document.getElementById('lightbox-img').src = img.src;
+  document.getElementById('lightbox').classList.add('open');
+}
+function closeLightbox() {
+  document.getElementById('lightbox').classList.remove('open');
+}
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
 </script>
 
 </body>

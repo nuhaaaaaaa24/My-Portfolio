@@ -2,6 +2,8 @@
 
 A personal developer portfolio showcasing my projects, skills, and journey as a Software Engineering student passionate about building real-world applications.
 
+View my Portfolio here: https://nuhaaaaaaa24.github.io/My-Portfolio/
+
 ---
 
 ## ✨ About Me
