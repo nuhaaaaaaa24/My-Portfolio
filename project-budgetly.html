@@ -4,29 +4,85 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Budgetly | Nuha Rilwan</title>
-
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  <link rel="stylesheet" href="css/variables.css">
   <link rel="stylesheet" href="css/styles.css">
+  <style>
+    .project-hero { min-height: 52vh; display: flex; align-items: flex-end; padding: 0 56px 56px; position: relative; overflow: hidden; background: var(--bg-base); margin-top: 65px; }
+    .project-hero::before { content: ''; position: absolute; inset: 0; background-image: linear-gradient(rgba(0,255,136,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(0,255,136,0.03) 1px, transparent 1px); background-size: 48px 48px; }
+    .project-hero-orb1 { position: absolute; width: 700px; height: 700px; top: -200px; right: -150px; border-radius: 50%; background: radial-gradient(circle, rgba(0,200,255,0.06) 0%, transparent 65%); pointer-events: none; }
+    .project-hero-orb2 { position: absolute; width: 400px; height: 400px; bottom: -100px; left: -80px; border-radius: 50%; background: radial-gradient(circle, rgba(0,255,136,0.05) 0%, transparent 65%); pointer-events: none; }
+    .project-hero-content { position: relative; z-index: 2; width: 100%; max-width: 1100px; margin: 0 auto; }
+    .project-hero-eyebrow { font-family: var(--mono); font-size: 10px; letter-spacing: 0.28em; text-transform: uppercase; color: var(--neon-green); margin-bottom: 18px; display: flex; align-items: center; gap: 10px; }
+    .project-hero-eyebrow::before { content: '> '; opacity: 0.5; }
+    .project-hero-title { font-family: var(--serif); font-size: clamp(52px, 8vw, 96px); font-weight: 300; line-height: 0.95; color: var(--text-primary); margin-bottom: 20px; }
+    .project-hero-title em { font-style: italic; background: linear-gradient(135deg, var(--neon-green), var(--neon-blue)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .project-hero-sub { font-size: 15px; font-weight: 300; color: var(--text-secondary); max-width: 580px; line-height: 1.85; margin-bottom: 28px; }
+    .project-hero-meta { display: flex; gap: 10px; flex-wrap: wrap; }
+    .project-content { max-width: 1100px; margin: 0 auto; padding: 56px 56px 80px; }
+    .section-divider { display: flex; align-items: center; gap: 14px; font-family: var(--mono); font-size: 10px; letter-spacing: 0.28em; text-transform: uppercase; color: var(--neon-green); margin: 56px 0 28px; }
+    .section-divider::before { content: '//'; opacity: 0.5; }
+    .section-divider::after { content: ''; flex: 1; height: 1px; background: linear-gradient(90deg, var(--border), transparent); }
+    .features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+    .feature-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 4px; padding: 24px; position: relative; overflow: hidden; transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s; }
+    .feature-card::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 1px; background: linear-gradient(90deg, var(--neon-green), transparent); opacity: 0; transition: opacity 0.3s; }
+    .feature-card:hover { border-color: rgba(0,255,136,0.2); transform: translateY(-3px); box-shadow: 0 12px 40px rgba(0,0,0,0.4), 0 0 20px var(--glow-green); }
+    .feature-card:hover::before { opacity: 1; }
+    .feature-icon { width: 40px; height: 40px; border-radius: 4px; background: rgba(0,255,136,0.06); border: 1px solid rgba(0,255,136,0.15); display: flex; align-items: center; justify-content: center; margin-bottom: 16px; }
+    .feature-icon i { font-size: 16px; color: var(--neon-green); }
+    .feature-card h4 { font-size: 14px; font-weight: 500; color: var(--text-primary); margin-bottom: 8px; }
+    .feature-card p { font-size: 13px; font-weight: 300; color: var(--text-secondary); line-height: 1.75; }
+    .tech-visual-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+    .tech-visual-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 4px; padding: 20px 16px; text-align: center; transition: border-color 0.3s, transform 0.3s; position: relative; overflow: hidden; }
+    .tech-visual-card::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 1px; background: var(--neon-blue); transition: width 0.4s ease; }
+    .tech-visual-card:hover { border-color: rgba(0,200,255,0.25); transform: translateY(-4px); box-shadow: 0 12px 32px rgba(0,0,0,0.4), 0 0 16px var(--glow-blue); }
+    .tech-visual-card:hover::after { width: 100%; }
+    .tech-visual-card i { font-size: 28px; color: var(--neon-blue); margin-bottom: 10px; display: block; transition: transform 0.3s; }
+    .tech-visual-card:hover i { transform: scale(1.15); }
+    .tech-visual-card .tech-name { font-family: var(--mono); font-size: 11px; color: var(--text-primary); letter-spacing: 0.06em; margin-bottom: 4px; }
+    .tech-visual-card .tech-role { font-size: 10px; color: var(--text-muted); }
+    .challenges-list { display: flex; flex-direction: column; gap: 14px; }
+    .challenge-item { display: grid; grid-template-columns: 1fr 1fr; background: var(--bg-card); border: 1px solid var(--border); border-radius: 4px; overflow: hidden; transition: border-color 0.3s; }
+    .challenge-item:hover { border-color: rgba(0,255,136,0.15); }
+    .challenge-problem { padding: 22px 24px; border-right: 1px solid var(--border); }
+    .challenge-problem::before { content: 'CHALLENGE'; display: block; font-family: var(--mono); font-size: 9px; letter-spacing: 0.22em; color: #ff2d78; margin-bottom: 10px; opacity: 0.7; }
+    .challenge-solution { padding: 22px 24px; }
+    .challenge-solution::before { content: 'SOLUTION'; display: block; font-family: var(--mono); font-size: 9px; letter-spacing: 0.22em; color: var(--neon-green); margin-bottom: 10px; opacity: 0.7; }
+    .challenge-problem p, .challenge-solution p { font-size: 13px; font-weight: 300; color: var(--text-secondary); line-height: 1.8; }
+    .screenshots-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
+    .screenshot-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 4px; overflow: hidden; cursor: pointer; transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s; }
+    .screenshot-card:hover { border-color: rgba(0,255,136,0.25); transform: translateY(-4px); box-shadow: 0 12px 32px rgba(0,0,0,0.5), 0 0 16px var(--glow-green); }
+    .screenshot-card img { width: 100%; height: 180px; object-fit: cover; display: block; filter: brightness(0.85); transition: filter 0.3s, transform 0.5s; }
+    .screenshot-card:hover img { filter: brightness(0.7); transform: scale(1.04); }
+    .screenshot-card-label { font-family: var(--mono); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-muted); padding: 10px 14px; background: var(--bg-hover); border-top: 1px solid var(--border); }
+    .next-project-banner { background: linear-gradient(135deg, rgba(0,255,136,0.04) 0%, rgba(0,200,255,0.04) 100%); border: 1px solid rgba(0,255,136,0.12); border-radius: 4px; padding: 40px 44px; display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; position: relative; overflow: hidden; margin-top: 56px; }
+    .next-project-banner::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 1px; background: linear-gradient(90deg, var(--neon-green), var(--neon-blue), transparent); }
+    .next-project-orb { position: absolute; right: -60px; top: -60px; width: 220px; height: 220px; border-radius: 50%; background: radial-gradient(circle, rgba(0,200,255,0.07) 0%, transparent 70%); pointer-events: none; }
+    .next-project-banner h3 { font-family: var(--serif); font-size: 28px; font-weight: 300; color: var(--text-primary); margin-bottom: 8px; }
+    .next-project-banner h3 em { font-style: italic; background: linear-gradient(135deg, var(--neon-green), var(--neon-blue)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .next-project-banner p { font-size: 13px; font-weight: 300; color: var(--text-secondary); line-height: 1.75; max-width: 420px; }
+    .next-btns { display: flex; gap: 12px; flex-shrink: 0; }
+    @media (max-width: 768px) {
+      .project-hero { padding: 0 24px 48px; padding-top: 40px; min-height: auto; }
+      .project-content { padding: 40px 24px 60px; }
+      .features-grid, .screenshots-grid { grid-template-columns: 1fr 1fr; }
+      .tech-visual-grid { grid-template-columns: repeat(2, 1fr); }
+      .challenge-item { grid-template-columns: 1fr; }
+      .challenge-problem { border-right: none; border-bottom: 1px solid var(--border); }
+      .next-project-banner { flex-direction: column; padding: 28px; }
+    }
+  </style>
 </head>
 <body>
 
-<!-- SCROLL PROGRESS -->
 <div class="scroll-progress" id="scrollProgress"></div>
-
-<!-- CUSTOM CURSOR -->
-<div class="cursor-dot"  id="cursorDot"></div>
+<div class="cursor-dot" id="cursorDot"></div>
 <div class="cursor-ring" id="cursorRing"></div>
 
-<!-- NAV -->
 <nav class="navbar" id="navbar">
   <div class="nav-left">
     <div class="nav-monogram">NR</div>
-    <div class="nav-text">
-      <h1>Nuha Rilwan</h1>
-      <p>Software Engineer</p>
-    </div>
+    <div class="nav-text"><h1>Nuha Rilwan</h1><p>Software Engineer</p></div>
   </div>
   <ul>
     <li><a href="index.html#about">About</a></li>
@@ -36,116 +92,176 @@
   </ul>
 </nav>
 
-<div class="page-wrapper">
-
-  <!-- BACK -->
-  <a class="back-link" href="index.html">
-    <i class="fa-solid fa-arrow-left"></i> Back to Portfolio
-  </a>
-
-  <!-- PROJECT HEADER -->
-  <div class="project-header">
-    <div class="project-eyebrow">Finance / Final Year Project</div>
-    <h1>Budget<em>ly</em></h1>
-    <p class="subtitle">
-      A smart budgeting app that helps users track their expenses and manage their finances effectively.
-    </p>
-    <div class="header-meta">
+<!-- HERO -->
+<div class="project-hero">
+  <div class="project-hero-orb1"></div>
+  <div class="project-hero-orb2"></div>
+  <div class="project-hero-content">
+    <a class="back-link" href="index.html" style="margin-bottom:32px;display:inline-flex;"><i class="fa-solid fa-arrow-left"></i> Back to Portfolio</a>
+    <div class="project-hero-eyebrow">Finance · Productivity · MERN Stack</div>
+    <h1 class="project-hero-title">Budget<em>ly</em></h1>
+    <p class="project-hero-sub">A smart personal finance tracker built on the MERN stack — helping users log expenses, set budgets, and visualize spending habits through an intuitive dashboard.</p>
+    <div class="project-hero-meta">
       <span class="meta-chip"><i class="fa-solid fa-user"></i> Personal Project</span>
       <span class="meta-chip"><i class="fa-solid fa-calendar"></i> 2025</span>
+      <span class="meta-chip"><i class="fa-solid fa-chart-pie"></i> Finance</span>
+    </div>
+  </div>
+</div>
+
+<div class="project-content">
+
+  <!-- QUICK ACTIONS -->
+  <div style="display:flex;gap:12px;margin-bottom:48px;flex-wrap:wrap;">
+    <a href="https://github.com/nuhaaaaaaa24/budgetly" target="_blank" class="project-btn primary"><i class="fa-brands fa-github"></i> View on GitHub</a>
+  </div>
+
+  <!-- ABOUT -->
+  <div class="section-divider reveal">About the Project</div>
+  <div style="display:grid;grid-template-columns:1.3fr 1fr;gap:16px;" class="reveal reveal-delay-1">
+    <div class="detail-card desc-card">
+      <div class="card-label"><i class="fa-solid fa-file-lines"></i> Overview</div>
+      <p>Budgetly is a smart budgeting app developed as a personal project to deepen full-stack JavaScript skills. The app helps users track income and expenses, categorize spending, and make informed financial decisions.</p>
+      <p>The app features a dashboard with Chart.js-powered pie and bar charts for spending visualization, a full transaction log with filtering, and a budget system with alert thresholds when limits are exceeded.</p>
+      <p>Built with JWT authentication, the MERN stack, and a focus on clean UX — Budgetly was designed as a real-world usable tool, not just a demo project.</p>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:12px;">
+      <div class="detail-card" style="padding:24px;">
+        <div class="card-label" style="margin-bottom:16px;"><i class="fa-solid fa-circle-info"></i> Quick Facts</div>
+        <div style="display:flex;flex-direction:column;gap:0;">
+          <div style="display:flex;justify-content:space-between;align-items:center;padding:11px 0;border-bottom:1px solid var(--border);"><span style="font-family:var(--mono);font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-muted);">Type</span><span style="font-size:12px;color:var(--text-secondary);">Personal Project</span></div>
+          <div style="display:flex;justify-content:space-between;align-items:center;padding:11px 0;border-bottom:1px solid var(--border);"><span style="font-family:var(--mono);font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-muted);">Domain</span><span style="font-size:12px;color:var(--text-secondary);">Finance / Productivity</span></div>
+          <div style="display:flex;justify-content:space-between;align-items:center;padding:11px 0;border-bottom:1px solid var(--border);"><span style="font-family:var(--mono);font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-muted);">Year</span><span style="font-size:12px;color:var(--text-secondary);">2025</span></div>
+          <div style="display:flex;justify-content:space-between;align-items:center;padding:11px 0;"><span style="font-family:var(--mono);font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-muted);">Focus</span><span style="font-size:12px;color:var(--text-secondary);">User Experience</span></div>
+        </div>
+      </div>
+      <div class="detail-card" style="padding:24px;">
+        <div class="card-label" style="margin-bottom:14px;"><i class="fa-solid fa-lightbulb"></i> Skills</div>
+        <div class="skills-grid">
+          <div class="skill-pill"><i class="fa-brands fa-react"></i> React</div>
+          <div class="skill-pill"><i class="fa-brands fa-node-js"></i> Node.js</div>
+          <div class="skill-pill"><i class="fa-solid fa-server"></i> Express</div>
+          <div class="skill-pill"><i class="fa-solid fa-database"></i> MongoDB</div>
+          <div class="skill-pill"><i class="fa-solid fa-lock"></i> JWT Auth</div>
+          <div class="skill-pill"><i class="fa-solid fa-chart-pie"></i> Chart.js</div>
+        </div>
+      </div>
     </div>
   </div>
 
-  <!-- ROW 1: Description + Skills -->
-  <div class="detail-grid">
-
-    <div class="detail-card desc-card reveal">
-      <div class="card-label"><i class="fa-solid fa-file-lines"></i> About the Project</div>
-      <p>
-        Budgetly is a smart budgeting app developed as a personal project. The app helps users track their expenses and manage their finances effectively.
-      </p>
-      <p>
-        The app features a user-friendly interface for logging expenses, categorizing spending, and visualizing financial data through charts and graphs. It also includes budgeting tools that allow users to set financial goals and receive insights on their spending habits.
-      </p>
-      <p>
-        Built with a focus on simplicity and usability, Budgetly aims to empower users to take control of their finances and make informed decisions about their spending.
-      </p>
+  <!-- KEY FEATURES -->
+  <div class="section-divider reveal">Key Features</div>
+  <div class="features-grid reveal reveal-delay-1">
+    <div class="feature-card">
+      <div class="feature-icon"><i class="fa-solid fa-lock"></i></div>
+      <h4>JWT Authentication</h4>
+      <p>Secure user registration and login with JSON Web Tokens. Protected routes ensure only authenticated users access their data.</p>
     </div>
-
-    <div class="detail-card reveal reveal-delay-1">
-      <div class="card-label"><i class="fa-solid fa-lightbulb"></i> Skills Learned</div>
-      <div class="skills-grid">
-        <div class="skill-pill"><i class="fa-brands fa-react"></i> React</div>
-        <div class="skill-pill"><i class="fa-brands fa-node-js"></i> Node.js</div>
-        <div class="skill-pill"><i class="fa-solid fa-server"></i> Express</div>
-        <div class="skill-pill"><i class="fa-solid fa-database"></i> MongoDB</div>
-        <div class="skill-pill"><i class="fa-brands fa-js"></i> JavaScript</div>
-      </div>
+    <div class="feature-card">
+      <div class="feature-icon"><i class="fa-solid fa-receipt"></i></div>
+      <h4>Transaction Management</h4>
+      <p>Full CRUD for income and expense entries — categorized, filterable, and sortable with real-time balance updates.</p>
     </div>
-
+    <div class="feature-card">
+      <div class="feature-icon"><i class="fa-solid fa-chart-pie"></i></div>
+      <h4>Chart.js Analytics</h4>
+      <p>Pie charts for spending by category and bar charts for monthly trends — giving users a clear financial picture at a glance.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon"><i class="fa-solid fa-bell"></i></div>
+      <h4>Budget Alerts</h4>
+      <p>Set monthly budgets per category. The app warns when spending approaches or exceeds the defined threshold.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon"><i class="fa-solid fa-layer-group"></i></div>
+      <h4>RESTful API</h4>
+      <p>Clean Express.js REST API with organized routes for auth, transactions, and budgets — built for scalability.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon"><i class="fa-solid fa-mobile-screen"></i></div>
+      <h4>Responsive UI</h4>
+      <p>Fully responsive React frontend — works cleanly across desktop, tablet, and mobile screen sizes.</p>
+    </div>
   </div>
 
-  <!-- ROW 2: Links + Quick Facts -->
-  <div class="detail-grid reveal reveal-delay-2">
+  <!-- TECH STACK -->
+  <div class="section-divider reveal">Tech Stack</div>
+  <div class="tech-visual-grid reveal reveal-delay-1">
+    <div class="tech-visual-card"><i class="fa-brands fa-react"></i><div class="tech-name">React</div><div class="tech-role">Frontend</div></div>
+    <div class="tech-visual-card"><i class="fa-brands fa-node-js"></i><div class="tech-name">Node.js</div><div class="tech-role">Runtime</div></div>
+    <div class="tech-visual-card"><i class="fa-solid fa-server"></i><div class="tech-name">Express</div><div class="tech-role">Backend API</div></div>
+    <div class="tech-visual-card"><i class="fa-solid fa-database"></i><div class="tech-name">MongoDB</div><div class="tech-role">Database</div></div>
+    <div class="tech-visual-card"><i class="fa-solid fa-lock"></i><div class="tech-name">JWT</div><div class="tech-role">Auth</div></div>
+    <div class="tech-visual-card"><i class="fa-solid fa-chart-pie"></i><div class="tech-name">Chart.js</div><div class="tech-role">Visualizations</div></div>
+    <div class="tech-visual-card"><i class="fa-brands fa-js"></i><div class="tech-name">JavaScript</div><div class="tech-role">Language</div></div>
+    <div class="tech-visual-card"><i class="fa-brands fa-github"></i><div class="tech-name">GitHub</div><div class="tech-role">Version Control</div></div>
+  </div>
 
-    <div class="detail-card">
-      <div class="card-label"><i class="fa-solid fa-link"></i> Project Links</div>
-      <div class="links-row" style="margin-bottom: 36px;">
-        <a href="https://github.com/nuhaaaaaaa24/budgetly" target="_blank" class="project-btn primary">
-          <i class="fa-brands fa-github"></i> View on GitHub
-        </a>
-      </div>
-
-      <div class="card-label" style="margin-top: 8px;"><i class="fa-solid fa-circle-info"></i> Quick Facts</div>
-      <div style="display:flex; flex-direction:column; gap:14px;">
-        <div style="display:flex; justify-content:space-between; align-items:center; padding-bottom:12px; border-bottom: 0.5px solid rgba(122,145,96,0.15);">
-          <span style="font-size:11px; letter-spacing:0.08em; text-transform:uppercase; color:rgba(44,36,32,0.38);">Type</span>
-          <span style="font-size:13px; color:rgba(44,36,32,0.72);">Personal Project</span>
-        </div>
-        <div style="display:flex; justify-content:space-between; align-items:center; padding-bottom:12px; border-bottom: 0.5px solid rgba(122,145,96,0.15);">
-          <span style="font-size:11px; letter-spacing:0.08em; text-transform:uppercase; color:rgba(44,36,32,0.38);">Domain</span>
-          <span style="font-size:13px; color:rgba(44,36,32,0.72);">Finance / Productivity</span>
-        </div>
-        <div style="display:flex; justify-content:space-between; align-items:center; padding-bottom:12px; border-bottom: 0.5px solid rgba(122,145,96,0.15);">
-          <span style="font-size:11px; letter-spacing:0.08em; text-transform:uppercase; color:rgba(44,36,32,0.38);">Stack</span>
-          <span style="font-size:13px; color:rgba(44,36,32,0.72);">React · Node.js · Express · MongoDB</span>
-        </div>
-        <div style="display:flex; justify-content:space-between; align-items:center;">
-          <span style="font-size:11px; letter-spacing:0.08em; text-transform:uppercase; color:rgba(44,36,32,0.38);">Focus</span>
-          <span style="font-size:13px; color:rgba(44,36,32,0.72);">User Experience</span>
-        </div>
-      </div>
+  <!-- CHALLENGES -->
+  <div class="section-divider reveal">Challenges &amp; Solutions</div>
+  <div class="challenges-list reveal reveal-delay-1">
+    <div class="challenge-item">
+      <div class="challenge-problem"><p>Keeping the dashboard charts in sync with live transaction data without full page reloads was causing stale state issues.</p></div>
+      <div class="challenge-solution"><p>Lifted state to a shared context provider and triggered chart re-renders via useEffect hooks tied to the transaction list dependency array.</p></div>
     </div>
-
-    <!-- Next project nudge -->
-    <div class="detail-card" style="display:flex; flex-direction:column; justify-content:center; align-items:flex-start; gap:18px;">
-      <div class="card-label"><i class="fa-solid fa-arrow-right"></i> Next Project</div>
-      <p style="font-size:13px; font-weight:300; color:rgba(44,36,32,0.5); line-height:1.8;">
-        Want to see more? Check out Wanderlust — a travel planning app for female solo travelers.
-      </p>
-      <a href="project-wanderlust.html" class="project-btn primary">
-        View Wanderlust <i class="fa-solid fa-arrow-right"></i>
-      </a>
-      <a href="index.html#projects" class="project-btn ghost">
-        All Projects
-      </a>
+    <div class="challenge-item">
+      <div class="challenge-problem"><p>Budget alert logic needed to compare cumulative spending per category against user-defined limits across all transactions.</p></div>
+      <div class="challenge-solution"><p>Built a MongoDB aggregation pipeline to group transactions by category and month, then compared totals server-side before returning alert flags to the frontend.</p></div>
     </div>
+  </div>
 
+  <!-- SCREENSHOTS -->
+  <div class="section-divider reveal">Screenshots</div>
+  <div class="screenshots-grid reveal reveal-delay-1">
+    <div class="screenshot-card" onclick="openLightbox(this)">
+      <img src="assets/images/projects/budgetly/Login.png" alt="Login">
+      <div class="screenshot-card-label">Login</div>
+    </div>
+    <div class="screenshot-card" onclick="openLightbox(this)">
+      <img src="assets/images/projects/budgetly/Register.png" alt="Register">
+      <div class="screenshot-card-label">Register</div>
+    </div>
+    <div class="screenshot-card" onclick="openLightbox(this)">
+      <img src="assets/images/projects/budgetly/Dashboard.png" alt="Dashboard">
+      <div class="screenshot-card-label">Dashboard</div>
+    </div>
+    <div class="screenshot-card" onclick="openLightbox(this)">
+      <img src="assets/images/projects/budgetly/Transaction.png" alt="Transactions">
+      <div class="screenshot-card-label">Transactions</div>
+    </div>
+    <div class="screenshot-card" onclick="openLightbox(this)">
+      <img src="assets/images/projects/budgetly/Charts.png" alt="Charts">
+      <div class="screenshot-card-label">Charts</div>
+    </div>
+    <div class="screenshot-card" onclick="openLightbox(this)">
+      <img src="assets/images/projects/budgetly/Budgets.png" alt="Budgets">
+      <div class="screenshot-card-label">Budgets</div>
+    </div>
+  </div>
+
+  <!-- NEXT PROJECT -->
+  <div class="next-project-banner reveal">
+    <div class="next-project-orb"></div>
+    <div>
+      <div style="font-family:var(--mono);font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:var(--neon-green);margin-bottom:12px;opacity:0.8;"><i class="fa-solid fa-arrow-right" style="margin-right:6px;"></i> Next Project</div>
+      <h3>Membership <em>System</em></h3>
+      <p>A clean Spring Boot membership management system with full CRUD, layered architecture, and MySQL integration.</p>
+    </div>
+    <div class="next-btns">
+      <a href="project-membership.html" class="project-btn primary">View Membership <i class="fa-solid fa-arrow-right"></i></a>
+      <a href="index.html#projects" class="project-btn ghost">All Projects</a>
+    </div>
   </div>
 
 </div>
 
-<!-- LIGHTBOX -->
 <div class="lightbox" id="lightbox" onclick="closeLightbox()">
   <button class="lightbox-close"><i class="fa-solid fa-xmark"></i></button>
   <img id="lightbox-img" src="" alt="">
 </div>
 
-<!-- FOOTER -->
 <footer>
-  <div class="footer-left">
-    <p>&copy; 2026 Nuha Rilwan. All rights reserved.</p>
-  </div>
+  <div class="footer-left"><p>&copy; 2026 Nuha Rilwan. All rights reserved.</p></div>
   <div class="footer-links">
     <a href="mailto:nuharilwan2424@gmail.com"><i class="fa-solid fa-envelope"></i> Email</a>
     <a href="https://github.com/nuhaaaaaaa24" target="_blank"><i class="fa-brands fa-github"></i> GitHub</a>
@@ -154,46 +270,15 @@
 </footer>
 
 <script>
-/* Custom Cursor */
-const dot  = document.getElementById('cursorDot');
-const ring = document.getElementById('cursorRing');
+const dot = document.getElementById('cursorDot'), ring = document.getElementById('cursorRing');
 let rx = 0, ry = 0;
-document.addEventListener('mousemove', e => {
-  dot.style.left  = e.clientX + 'px';
-  dot.style.top   = e.clientY + 'px';
-  rx += (e.clientX - rx) * 0.12;
-  ry += (e.clientY - ry) * 0.12;
-  ring.style.left = rx + 'px';
-  ring.style.top  = ry + 'px';
-});
-
-/* Scroll Progress */
-const progressBar = document.getElementById('scrollProgress');
-window.addEventListener('scroll', () => {
-  const pct = window.scrollY / (document.body.scrollHeight - window.innerHeight) * 100;
-  progressBar.style.width = pct + '%';
-  document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 80);
-});
-
-/* Scroll Reveal */
-const revealEls = document.querySelectorAll('.reveal');
-const obs = new IntersectionObserver(entries => {
-  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
-}, { threshold: 0.1 });
-revealEls.forEach(el => obs.observe(el));
-
-/* Lightbox */
-function openLightbox(el) {
-  const img = el.querySelector('img');
-  if (!img) return;
-  document.getElementById('lightbox-img').src = img.src;
-  document.getElementById('lightbox').classList.add('open');
-}
-function closeLightbox() {
-  document.getElementById('lightbox').classList.remove('open');
-}
-document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+document.addEventListener('mousemove', e => { dot.style.left = e.clientX+'px'; dot.style.top = e.clientY+'px'; rx += (e.clientX-rx)*0.12; ry += (e.clientY-ry)*0.12; ring.style.left = rx+'px'; ring.style.top = ry+'px'; });
+window.addEventListener('scroll', () => { document.getElementById('scrollProgress').style.width = (window.scrollY/(document.body.scrollHeight-window.innerHeight)*100)+'%'; document.getElementById('navbar').classList.toggle('scrolled', window.scrollY>80); });
+const obs = new IntersectionObserver(entries => entries.forEach(e => { if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);} }), {threshold:0.1});
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+function openLightbox(el) { const img = el.querySelector('img'); if(!img) return; document.getElementById('lightbox-img').src = img.src; document.getElementById('lightbox').classList.add('open'); }
+function closeLightbox() { document.getElementById('lightbox').classList.remove('open'); }
+document.addEventListener('keydown', e => { if(e.key==='Escape') closeLightbox(); });
 </script>
-
 </body>
 </html>

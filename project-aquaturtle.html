@@ -4,29 +4,69 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>AquaTurtle | Nuha Rilwan</title>
-
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  <link rel="stylesheet" href="css/variables.css">
   <link rel="stylesheet" href="css/styles.css">
+  <style>
+    .project-hero { min-height: 52vh; display: flex; align-items: flex-end; padding: 0 56px 56px; position: relative; overflow: hidden; background: var(--bg-base); margin-top: 65px; }
+    .project-hero::before { content: ''; position: absolute; inset: 0; background-image: linear-gradient(rgba(0,255,136,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(0,255,136,0.03) 1px, transparent 1px); background-size: 48px 48px; }
+    .project-hero-orb1 { position: absolute; width: 700px; height: 700px; top: -200px; right: -150px; border-radius: 50%; background: radial-gradient(circle, rgba(0,200,255,0.07) 0%, transparent 65%); pointer-events: none; }
+    .project-hero-orb2 { position: absolute; width: 400px; height: 400px; bottom: -100px; left: -80px; border-radius: 50%; background: radial-gradient(circle, rgba(0,255,136,0.06) 0%, transparent 65%); pointer-events: none; }
+    .project-hero-content { position: relative; z-index: 2; width: 100%; max-width: 1100px; margin: 0 auto; }
+    .project-hero-eyebrow { font-family: var(--mono); font-size: 10px; letter-spacing: 0.28em; text-transform: uppercase; color: var(--neon-green); margin-bottom: 18px; display: flex; align-items: center; gap: 10px; }
+    .project-hero-eyebrow::before { content: '> '; opacity: 0.5; }
+    .project-hero-title { font-family: var(--serif); font-size: clamp(52px, 8vw, 96px); font-weight: 300; line-height: 0.95; color: var(--text-primary); margin-bottom: 20px; }
+    .project-hero-title em { font-style: italic; background: linear-gradient(135deg, var(--neon-green), var(--neon-blue)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .project-hero-sub { font-size: 15px; font-weight: 300; color: var(--text-secondary); max-width: 580px; line-height: 1.85; margin-bottom: 28px; }
+    .project-hero-meta { display: flex; gap: 10px; flex-wrap: wrap; }
+    .project-content { max-width: 1100px; margin: 0 auto; padding: 56px 56px 80px; }
+    .section-divider { display: flex; align-items: center; gap: 14px; font-family: var(--mono); font-size: 10px; letter-spacing: 0.28em; text-transform: uppercase; color: var(--neon-green); margin: 56px 0 28px; }
+    .section-divider::before { content: '//'; opacity: 0.5; }
+    .section-divider::after { content: ''; flex: 1; height: 1px; background: linear-gradient(90deg, var(--border), transparent); }
+    .features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+    .feature-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 4px; padding: 24px; position: relative; overflow: hidden; transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s; }
+    .feature-card::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 1px; background: linear-gradient(90deg, var(--neon-green), transparent); opacity: 0; transition: opacity 0.3s; }
+    .feature-card:hover { border-color: rgba(0,255,136,0.2); transform: translateY(-3px); box-shadow: 0 12px 40px rgba(0,0,0,0.4), 0 0 20px var(--glow-green); }
+    .feature-card:hover::before { opacity: 1; }
+    .feature-icon { width: 40px; height: 40px; border-radius: 4px; background: rgba(0,255,136,0.06); border: 1px solid rgba(0,255,136,0.15); display: flex; align-items: center; justify-content: center; margin-bottom: 16px; }
+    .feature-icon i { font-size: 16px; color: var(--neon-green); }
+    .feature-card h4 { font-size: 14px; font-weight: 500; color: var(--text-primary); margin-bottom: 8px; }
+    .feature-card p { font-size: 13px; font-weight: 300; color: var(--text-secondary); line-height: 1.75; }
+    .tech-visual-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+    .tech-visual-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 4px; padding: 20px 16px; text-align: center; transition: border-color 0.3s, transform 0.3s; position: relative; overflow: hidden; }
+    .tech-visual-card::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 1px; background: var(--neon-blue); transition: width 0.4s ease; }
+    .tech-visual-card:hover { border-color: rgba(0,200,255,0.25); transform: translateY(-4px); box-shadow: 0 12px 32px rgba(0,0,0,0.4), 0 0 16px var(--glow-blue); }
+    .tech-visual-card:hover::after { width: 100%; }
+    .tech-visual-card i { font-size: 28px; color: var(--neon-blue); margin-bottom: 10px; display: block; transition: transform 0.3s; }
+    .tech-visual-card:hover i { transform: scale(1.15); }
+    .tech-visual-card .tech-name { font-family: var(--mono); font-size: 11px; color: var(--text-primary); letter-spacing: 0.06em; margin-bottom: 4px; }
+    .tech-visual-card .tech-role { font-size: 10px; color: var(--text-muted); }
+    .next-project-banner { background: linear-gradient(135deg, rgba(0,255,136,0.04) 0%, rgba(0,200,255,0.04) 100%); border: 1px solid rgba(0,255,136,0.12); border-radius: 4px; padding: 40px 44px; display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; position: relative; overflow: hidden; margin-top: 56px; }
+    .next-project-banner::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 1px; background: linear-gradient(90deg, var(--neon-green), var(--neon-blue), transparent); }
+    .next-project-orb { position: absolute; right: -60px; top: -60px; width: 220px; height: 220px; border-radius: 50%; background: radial-gradient(circle, rgba(0,200,255,0.07) 0%, transparent 70%); pointer-events: none; }
+    .next-project-banner h3 { font-family: var(--serif); font-size: 28px; font-weight: 300; color: var(--text-primary); margin-bottom: 8px; }
+    .next-project-banner h3 em { font-style: italic; background: linear-gradient(135deg, var(--neon-green), var(--neon-blue)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .next-project-banner p { font-size: 13px; font-weight: 300; color: var(--text-secondary); line-height: 1.75; max-width: 420px; }
+    .next-btns { display: flex; gap: 12px; flex-shrink: 0; }
+    @media (max-width: 768px) {
+      .project-hero { padding: 0 24px 48px; padding-top: 40px; min-height: auto; }
+      .project-content { padding: 40px 24px 60px; }
+      .features-grid { grid-template-columns: 1fr 1fr; }
+      .tech-visual-grid { grid-template-columns: repeat(2, 1fr); }
+      .next-project-banner { flex-direction: column; padding: 28px; }
+    }
+  </style>
 </head>
 <body>
 
-<!-- SCROLL PROGRESS -->
 <div class="scroll-progress" id="scrollProgress"></div>
-
-<!-- CUSTOM CURSOR -->
-<div class="cursor-dot"  id="cursorDot"></div>
+<div class="cursor-dot" id="cursorDot"></div>
 <div class="cursor-ring" id="cursorRing"></div>
 
-<!-- NAV -->
 <nav class="navbar" id="navbar">
   <div class="nav-left">
     <div class="nav-monogram">NR</div>
-    <div class="nav-text">
-      <h1>Nuha Rilwan</h1>
-      <p>Software Engineer</p>
-    </div>
+    <div class="nav-text"><h1>Nuha Rilwan</h1><p>Software Engineer</p></div>
   </div>
   <ul>
     <li><a href="index.html#about">About</a></li>
@@ -36,118 +76,126 @@
   </ul>
 </nav>
 
-<div class="page-wrapper">
-
-  <!-- BACK -->
-  <a class="back-link" href="index.html">
-    <i class="fa-solid fa-arrow-left"></i> Back to Portfolio
-  </a>
-
-  <!-- PROJECT HEADER -->
-  <div class="project-header">
-    <div class="project-eyebrow">Environmental Awareness / Website</div>
-    <h1>Aqua<em>Turtle</em></h1>
-    <p class="subtitle">
-      An educational platform raising awareness about Sri Lanka's diverse turtle species and their ecological importance — built in my first year of university.
-    </p>
-    <div class="header-meta">
+<!-- HERO -->
+<div class="project-hero">
+  <div class="project-hero-orb1"></div>
+  <div class="project-hero-orb2"></div>
+  <div class="project-hero-content">
+    <a class="back-link" href="index.html" style="margin-bottom:32px;display:inline-flex;"><i class="fa-solid fa-arrow-left"></i> Back to Portfolio</a>
+    <div class="project-hero-eyebrow">HTML · CSS · JavaScript · First Year</div>
+    <h1 class="project-hero-title">Aqua<em>Turtle</em></h1>
+    <p class="project-hero-sub">An educational platform raising awareness about Sri Lanka's diverse sea turtle species — their habitats, life cycles, and conservation efforts. Built during my first year of university.</p>
+    <div class="project-hero-meta">
       <span class="meta-chip"><i class="fa-solid fa-user"></i> Individual Project</span>
       <span class="meta-chip"><i class="fa-solid fa-calendar"></i> 2023</span>
       <span class="meta-chip"><i class="fa-solid fa-graduation-cap"></i> First Year</span>
+      <span class="meta-chip"><i class="fa-solid fa-fish"></i> Conservation</span>
+    </div>
+  </div>
+</div>
+
+<div class="project-content">
+
+  <!-- QUICK ACTIONS -->
+  <div style="display:flex;gap:12px;margin-bottom:48px;flex-wrap:wrap;">
+    <a href="https://github.com/nuhaaaaaaa24/AquaTurtle" target="_blank" class="project-btn primary"><i class="fa-brands fa-github"></i> View on GitHub</a>
+  </div>
+
+  <!-- ABOUT -->
+  <div class="section-divider reveal">About the Project</div>
+  <div style="display:grid;grid-template-columns:1.3fr 1fr;gap:16px;" class="reveal reveal-delay-1">
+    <div class="detail-card desc-card">
+      <div class="card-label"><i class="fa-solid fa-file-lines"></i> Overview</div>
+      <p>AquaTurtle is a web-based educational platform designed to raise awareness about Sri Lanka's diverse sea turtle species and their ecological importance. The site provides structured information on different species, their natural habitats, life cycles, and major threats including habitat destruction, marine pollution, and illegal poaching.</p>
+      <p>The platform promotes marine conservation by educating users and encouraging responsible environmental practices. It highlights ongoing conservation initiatives in Sri Lanka, giving users insight into how local efforts protect endangered sea turtles.</p>
+      <p>Built from scratch using pure HTML, CSS, and JavaScript during my first year — this project established my foundation in frontend development, responsive design, and web standards.</p>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:12px;">
+      <div class="detail-card" style="padding:24px;">
+        <div class="card-label" style="margin-bottom:16px;"><i class="fa-solid fa-circle-info"></i> Quick Facts</div>
+        <div style="display:flex;flex-direction:column;gap:0;">
+          <div style="display:flex;justify-content:space-between;align-items:center;padding:11px 0;border-bottom:1px solid var(--border);"><span style="font-family:var(--mono);font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-muted);">Type</span><span style="font-size:12px;color:var(--text-secondary);">Academic Project</span></div>
+          <div style="display:flex;justify-content:space-between;align-items:center;padding:11px 0;border-bottom:1px solid var(--border);"><span style="font-family:var(--mono);font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-muted);">Domain</span><span style="font-size:12px;color:var(--text-secondary);">Environmental Awareness</span></div>
+          <div style="display:flex;justify-content:space-between;align-items:center;padding:11px 0;border-bottom:1px solid var(--border);"><span style="font-family:var(--mono);font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-muted);">Year</span><span style="font-size:12px;color:var(--text-secondary);">2023</span></div>
+          <div style="display:flex;justify-content:space-between;align-items:center;padding:11px 0;"><span style="font-family:var(--mono);font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-muted);">Focus</span><span style="font-size:12px;color:var(--text-secondary);">Education / Conservation</span></div>
+        </div>
+      </div>
+      <div class="detail-card" style="padding:24px;">
+        <div class="card-label" style="margin-bottom:14px;"><i class="fa-solid fa-lightbulb"></i> Skills</div>
+        <div class="skills-grid">
+          <div class="skill-pill"><i class="fa-brands fa-html5"></i> HTML5</div>
+          <div class="skill-pill"><i class="fa-brands fa-css3-alt"></i> CSS3</div>
+          <div class="skill-pill"><i class="fa-brands fa-js"></i> JavaScript</div>
+          <div class="skill-pill"><i class="fa-solid fa-mobile"></i> Responsive Design</div>
+          <div class="skill-pill"><i class="fa-solid fa-palette"></i> UI/UX</div>
+          <div class="skill-pill"><i class="fa-solid fa-code-branch"></i> Git</div>
+        </div>
+      </div>
     </div>
   </div>
 
-  <!-- ROW 1: Description + Skills -->
-  <div class="detail-grid">
-
-    <div class="detail-card desc-card reveal">
-      <div class="card-label"><i class="fa-solid fa-file-lines"></i> About the Project</div>
-      <p>
-        AquaTurtle is a web-based educational platform designed to raise awareness about Sri Lanka's diverse turtle species and their ecological importance. The website provides structured information on different turtle species, their natural habitats, life cycles, and the major threats they face — including habitat destruction, marine pollution, and illegal poaching.
-      </p>
-      <p>
-        The platform promotes marine conservation by educating users and encouraging responsible environmental practices. It also highlights ongoing conservation efforts in Sri Lanka, offering users insight into how local initiatives contribute to the protection of endangered sea turtles.
-      </p>
-      <p>
-        The project is continuously being improved with plans to enhance user experience, expand informational content, and introduce interactive features to increase engagement and accessibility.
-      </p>
+  <!-- KEY FEATURES -->
+  <div class="section-divider reveal">Key Features</div>
+  <div class="features-grid reveal reveal-delay-1">
+    <div class="feature-card">
+      <div class="feature-icon"><i class="fa-solid fa-fish"></i></div>
+      <h4>Species Profiles</h4>
+      <p>Dedicated pages for each of Sri Lanka's sea turtle species — covering appearance, habitat range, diet, and conservation status.</p>
     </div>
-
-    <div class="detail-card reveal reveal-delay-1">
-      <div class="card-label"><i class="fa-solid fa-lightbulb"></i> Skills Learned</div>
-      <div class="skills-grid">
-        <div class="skill-pill"><i class="fa-brands fa-html5"></i> HTML5</div>
-        <div class="skill-pill"><i class="fa-brands fa-css3-alt"></i> CSS3</div>
-        <div class="skill-pill"><i class="fa-brands fa-js"></i> JavaScript</div>
-        <div class="skill-pill"><i class="fa-solid fa-code-branch"></i> Git</div>
-        <div class="skill-pill"><i class="fa-solid fa-palette"></i> UI/UX Design</div>
-        <div class="skill-pill"><i class="fa-solid fa-mobile"></i> Responsive Layout</div>
-      </div>
+    <div class="feature-card">
+      <div class="feature-icon"><i class="fa-solid fa-leaf"></i></div>
+      <h4>Conservation Focus</h4>
+      <p>Highlights active turtle conservation projects in Sri Lanka with information on how users can support local environmental efforts.</p>
     </div>
-
+    <div class="feature-card">
+      <div class="feature-icon"><i class="fa-solid fa-mobile-screen"></i></div>
+      <h4>Responsive Layout</h4>
+      <p>Fully responsive design — adapts cleanly to all screen sizes using CSS Grid and Flexbox without any frameworks.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon"><i class="fa-solid fa-timeline"></i></div>
+      <h4>Life Cycle Visual</h4>
+      <p>Interactive JavaScript-driven visual showing the sea turtle life cycle — from egg to adult — with descriptive overlays.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon"><i class="fa-solid fa-image"></i></div>
+      <h4>Photo Gallery</h4>
+      <p>Curated image gallery of Sri Lankan sea turtles with lightbox functionality built in vanilla JavaScript.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon"><i class="fa-solid fa-universal-access"></i></div>
+      <h4>Semantic HTML</h4>
+      <p>Built with accessibility in mind — proper heading hierarchy, alt text on all images, and semantic HTML5 elements throughout.</p>
+    </div>
   </div>
 
-  <!-- ROW 2: Links + Quick Facts -->
-  <div class="detail-grid reveal reveal-delay-2">
+  <!-- TECH STACK -->
+  <div class="section-divider reveal">Tech Stack</div>
+  <div class="tech-visual-grid reveal reveal-delay-1">
+    <div class="tech-visual-card"><i class="fa-brands fa-html5"></i><div class="tech-name">HTML5</div><div class="tech-role">Structure</div></div>
+    <div class="tech-visual-card"><i class="fa-brands fa-css3-alt"></i><div class="tech-name">CSS3</div><div class="tech-role">Styling</div></div>
+    <div class="tech-visual-card"><i class="fa-brands fa-js"></i><div class="tech-name">JavaScript</div><div class="tech-role">Interactivity</div></div>
+    <div class="tech-visual-card"><i class="fa-brands fa-github"></i><div class="tech-name">GitHub</div><div class="tech-role">Version Control</div></div>
+  </div>
 
-    <div class="detail-card">
-      <div class="card-label"><i class="fa-solid fa-link"></i> Project Links</div>
-      <div class="links-row" style="margin-bottom: 36px;">
-        <a href="https://github.com/nuhaaaaaaa24/AquaTurtle" target="_blank" class="project-btn primary">
-          <i class="fa-brands fa-github"></i> View on GitHub
-        </a>
-      </div>
-
-      <div class="card-label" style="margin-top: 8px;"><i class="fa-solid fa-circle-info"></i> Quick Facts</div>
-      <div style="display:flex; flex-direction:column; gap:14px;">
-        <div style="display:flex; justify-content:space-between; align-items:center; padding-bottom:12px; border-bottom: 0.5px solid rgba(122,145,96,0.15);">
-          <span style="font-size:11px; letter-spacing:0.08em; text-transform:uppercase; color:rgba(44,36,32,0.38);">Type</span>
-          <span style="font-size:13px; color:rgba(44,36,32,0.72);">Website</span>
-        </div>
-        <div style="display:flex; justify-content:space-between; align-items:center; padding-bottom:12px; border-bottom: 0.5px solid rgba(122,145,96,0.15);">
-          <span style="font-size:11px; letter-spacing:0.08em; text-transform:uppercase; color:rgba(44,36,32,0.38);">Domain</span>
-          <span style="font-size:13px; color:rgba(44,36,32,0.72);">Environmental Awareness</span>
-        </div>
-        <div style="display:flex; justify-content:space-between; align-items:center; padding-bottom:12px; border-bottom: 0.5px solid rgba(122,145,96,0.15);">
-          <span style="font-size:11px; letter-spacing:0.08em; text-transform:uppercase; color:rgba(44,36,32,0.38);">Stack</span>
-          <span style="font-size:13px; color:rgba(44,36,32,0.72);">HTML · CSS · JavaScript</span>
-        </div>
-        <div style="display:flex; justify-content:space-between; align-items:center;">
-          <span style="font-size:11px; letter-spacing:0.08em; text-transform:uppercase; color:rgba(44,36,32,0.38);">Focus</span>
-          <span style="font-size:13px; color:rgba(44,36,32,0.72);">Educational</span>
-        </div>
-      </div>
+  <!-- NEXT PROJECT -->
+  <div class="next-project-banner reveal">
+    <div class="next-project-orb"></div>
+    <div>
+      <div style="font-family:var(--mono);font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:var(--neon-green);margin-bottom:12px;opacity:0.8;"><i class="fa-solid fa-arrow-right" style="margin-right:6px;"></i> Next Project</div>
+      <h3>Sign<em>Bridge</em></h3>
+      <p>Real-time sign language translation using CNN-based gesture recognition — a final-year group project focused on accessibility.</p>
     </div>
-
-    <!-- Next project nudge -->
-    <div class="detail-card" style="display:flex; flex-direction:column; justify-content:center; align-items:flex-start; gap:18px;">
-      <div class="card-label"><i class="fa-solid fa-arrow-right"></i> Next Project</div>
-      <p style="font-size:13px; font-weight:300; color:rgba(44,36,32,0.5); line-height:1.8;">
-        Want to see more? Check out SignBridge — a real-time sign language detection system built with CNN and Python.
-      </p>
-      <a href="project-signbridge.html" class="project-btn primary">
-        View SignBridge <i class="fa-solid fa-arrow-right"></i>
-      </a>
-      <a href="index.html#projects" class="project-btn ghost">
-        All Projects
-      </a>
+    <div class="next-btns">
+      <a href="project-signbridge.html" class="project-btn primary">View SignBridge <i class="fa-solid fa-arrow-right"></i></a>
+      <a href="index.html#projects" class="project-btn ghost">All Projects</a>
     </div>
-
   </div>
 
 </div>
 
-<!-- LIGHTBOX -->
-<div class="lightbox" id="lightbox" onclick="closeLightbox()">
-  <button class="lightbox-close"><i class="fa-solid fa-xmark"></i></button>
-  <img id="lightbox-img" src="" alt="">
-</div>
-
-<!-- FOOTER -->
 <footer>
-  <div class="footer-left">
-    <p>&copy; 2026 Nuha Rilwan. All rights reserved.</p>
-  </div>
+  <div class="footer-left"><p>&copy; 2026 Nuha Rilwan. All rights reserved.</p></div>
   <div class="footer-links">
     <a href="mailto:nuharilwan2424@gmail.com"><i class="fa-solid fa-envelope"></i> Email</a>
     <a href="https://github.com/nuhaaaaaaa24" target="_blank"><i class="fa-brands fa-github"></i> GitHub</a>
@@ -156,46 +204,12 @@
 </footer>
 
 <script>
-/* Custom Cursor */
-const dot  = document.getElementById('cursorDot');
-const ring = document.getElementById('cursorRing');
+const dot = document.getElementById('cursorDot'), ring = document.getElementById('cursorRing');
 let rx = 0, ry = 0;
-document.addEventListener('mousemove', e => {
-  dot.style.left  = e.clientX + 'px';
-  dot.style.top   = e.clientY + 'px';
-  rx += (e.clientX - rx) * 0.12;
-  ry += (e.clientY - ry) * 0.12;
-  ring.style.left = rx + 'px';
-  ring.style.top  = ry + 'px';
-});
-
-/* Scroll Progress */
-const progressBar = document.getElementById('scrollProgress');
-window.addEventListener('scroll', () => {
-  const pct = window.scrollY / (document.body.scrollHeight - window.innerHeight) * 100;
-  progressBar.style.width = pct + '%';
-  document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 80);
-});
-
-/* Scroll Reveal */
-const revealEls = document.querySelectorAll('.reveal');
-const obs = new IntersectionObserver(entries => {
-  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
-}, { threshold: 0.1 });
-revealEls.forEach(el => obs.observe(el));
-
-/* Lightbox */
-function openLightbox(el) {
-  const img = el.querySelector('img');
-  if (!img) return;
-  document.getElementById('lightbox-img').src = img.src;
-  document.getElementById('lightbox').classList.add('open');
-}
-function closeLightbox() {
-  document.getElementById('lightbox').classList.remove('open');
-}
-document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+document.addEventListener('mousemove', e => { dot.style.left = e.clientX+'px'; dot.style.top = e.clientY+'px'; rx += (e.clientX-rx)*0.12; ry += (e.clientY-ry)*0.12; ring.style.left = rx+'px'; ring.style.top = ry+'px'; });
+window.addEventListener('scroll', () => { document.getElementById('scrollProgress').style.width = (window.scrollY/(document.body.scrollHeight-window.innerHeight)*100)+'%'; document.getElementById('navbar').classList.toggle('scrolled', window.scrollY>80); });
+const obs = new IntersectionObserver(entries => entries.forEach(e => { if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);} }), {threshold:0.1});
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
 </script>
-
 </body>
 </html>

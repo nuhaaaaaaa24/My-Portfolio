@@ -4,29 +4,79 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Membership Management System | Nuha Rilwan</title>
-
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  <link rel="stylesheet" href="css/variables.css">
   <link rel="stylesheet" href="css/styles.css">
+  <style>
+    .project-hero { min-height: 52vh; display: flex; align-items: flex-end; padding: 0 56px 56px; position: relative; overflow: hidden; background: var(--bg-base); margin-top: 65px; }
+    .project-hero::before { content: ''; position: absolute; inset: 0; background-image: linear-gradient(rgba(0,255,136,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(0,255,136,0.03) 1px, transparent 1px); background-size: 48px 48px; }
+    .project-hero-orb1 { position: absolute; width: 700px; height: 700px; top: -200px; right: -150px; border-radius: 50%; background: radial-gradient(circle, rgba(168,85,247,0.06) 0%, transparent 65%); pointer-events: none; }
+    .project-hero-orb2 { position: absolute; width: 400px; height: 400px; bottom: -100px; left: -80px; border-radius: 50%; background: radial-gradient(circle, rgba(0,255,136,0.05) 0%, transparent 65%); pointer-events: none; }
+    .project-hero-content { position: relative; z-index: 2; width: 100%; max-width: 1100px; margin: 0 auto; }
+    .project-hero-eyebrow { font-family: var(--mono); font-size: 10px; letter-spacing: 0.28em; text-transform: uppercase; color: var(--neon-green); margin-bottom: 18px; display: flex; align-items: center; gap: 10px; }
+    .project-hero-eyebrow::before { content: '> '; opacity: 0.5; }
+    .project-hero-title { font-family: var(--serif); font-size: clamp(42px, 6vw, 80px); font-weight: 300; line-height: 1.0; color: var(--text-primary); margin-bottom: 20px; }
+    .project-hero-title em { font-style: italic; background: linear-gradient(135deg, var(--neon-green), var(--neon-blue)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .project-hero-sub { font-size: 15px; font-weight: 300; color: var(--text-secondary); max-width: 580px; line-height: 1.85; margin-bottom: 28px; }
+    .project-hero-meta { display: flex; gap: 10px; flex-wrap: wrap; }
+    .project-content { max-width: 1100px; margin: 0 auto; padding: 56px 56px 80px; }
+    .section-divider { display: flex; align-items: center; gap: 14px; font-family: var(--mono); font-size: 10px; letter-spacing: 0.28em; text-transform: uppercase; color: var(--neon-green); margin: 56px 0 28px; }
+    .section-divider::before { content: '//'; opacity: 0.5; }
+    .section-divider::after { content: ''; flex: 1; height: 1px; background: linear-gradient(90deg, var(--border), transparent); }
+    .features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+    .feature-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 4px; padding: 24px; position: relative; overflow: hidden; transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s; }
+    .feature-card::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 1px; background: linear-gradient(90deg, var(--neon-green), transparent); opacity: 0; transition: opacity 0.3s; }
+    .feature-card:hover { border-color: rgba(0,255,136,0.2); transform: translateY(-3px); box-shadow: 0 12px 40px rgba(0,0,0,0.4), 0 0 20px var(--glow-green); }
+    .feature-card:hover::before { opacity: 1; }
+    .feature-icon { width: 40px; height: 40px; border-radius: 4px; background: rgba(0,255,136,0.06); border: 1px solid rgba(0,255,136,0.15); display: flex; align-items: center; justify-content: center; margin-bottom: 16px; }
+    .feature-icon i { font-size: 16px; color: var(--neon-green); }
+    .feature-card h4 { font-size: 14px; font-weight: 500; color: var(--text-primary); margin-bottom: 8px; }
+    .feature-card p { font-size: 13px; font-weight: 300; color: var(--text-secondary); line-height: 1.75; }
+    .tech-visual-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+    .tech-visual-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 4px; padding: 20px 16px; text-align: center; transition: border-color 0.3s, transform 0.3s; position: relative; overflow: hidden; }
+    .tech-visual-card::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 1px; background: var(--neon-blue); transition: width 0.4s ease; }
+    .tech-visual-card:hover { border-color: rgba(0,200,255,0.25); transform: translateY(-4px); box-shadow: 0 12px 32px rgba(0,0,0,0.4), 0 0 16px var(--glow-blue); }
+    .tech-visual-card:hover::after { width: 100%; }
+    .tech-visual-card i { font-size: 28px; color: var(--neon-blue); margin-bottom: 10px; display: block; transition: transform 0.3s; }
+    .tech-visual-card:hover i { transform: scale(1.15); }
+    .tech-visual-card .tech-name { font-family: var(--mono); font-size: 11px; color: var(--text-primary); letter-spacing: 0.06em; margin-bottom: 4px; }
+    .tech-visual-card .tech-role { font-size: 10px; color: var(--text-muted); }
+    .challenges-list { display: flex; flex-direction: column; gap: 14px; }
+    .challenge-item { display: grid; grid-template-columns: 1fr 1fr; background: var(--bg-card); border: 1px solid var(--border); border-radius: 4px; overflow: hidden; transition: border-color 0.3s; }
+    .challenge-item:hover { border-color: rgba(0,255,136,0.15); }
+    .challenge-problem { padding: 22px 24px; border-right: 1px solid var(--border); }
+    .challenge-problem::before { content: 'CHALLENGE'; display: block; font-family: var(--mono); font-size: 9px; letter-spacing: 0.22em; color: #ff2d78; margin-bottom: 10px; opacity: 0.7; }
+    .challenge-solution { padding: 22px 24px; }
+    .challenge-solution::before { content: 'SOLUTION'; display: block; font-family: var(--mono); font-size: 9px; letter-spacing: 0.22em; color: var(--neon-green); margin-bottom: 10px; opacity: 0.7; }
+    .challenge-problem p, .challenge-solution p { font-size: 13px; font-weight: 300; color: var(--text-secondary); line-height: 1.8; }
+    .next-project-banner { background: linear-gradient(135deg, rgba(0,255,136,0.04) 0%, rgba(0,200,255,0.04) 100%); border: 1px solid rgba(0,255,136,0.12); border-radius: 4px; padding: 40px 44px; display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; position: relative; overflow: hidden; margin-top: 56px; }
+    .next-project-banner::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 1px; background: linear-gradient(90deg, var(--neon-green), var(--neon-blue), transparent); }
+    .next-project-orb { position: absolute; right: -60px; top: -60px; width: 220px; height: 220px; border-radius: 50%; background: radial-gradient(circle, rgba(0,200,255,0.07) 0%, transparent 70%); pointer-events: none; }
+    .next-project-banner h3 { font-family: var(--serif); font-size: 28px; font-weight: 300; color: var(--text-primary); margin-bottom: 8px; }
+    .next-project-banner h3 em { font-style: italic; background: linear-gradient(135deg, var(--neon-green), var(--neon-blue)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .next-project-banner p { font-size: 13px; font-weight: 300; color: var(--text-secondary); line-height: 1.75; max-width: 420px; }
+    .next-btns { display: flex; gap: 12px; flex-shrink: 0; }
+    @media (max-width: 768px) {
+      .project-hero { padding: 0 24px 48px; padding-top: 40px; min-height: auto; }
+      .project-content { padding: 40px 24px 60px; }
+      .features-grid { grid-template-columns: 1fr 1fr; }
+      .tech-visual-grid { grid-template-columns: repeat(2, 1fr); }
+      .challenge-item { grid-template-columns: 1fr; }
+      .challenge-problem { border-right: none; border-bottom: 1px solid var(--border); }
+      .next-project-banner { flex-direction: column; padding: 28px; }
+    }
+  </style>
 </head>
 <body>
 
-<!-- SCROLL PROGRESS -->
 <div class="scroll-progress" id="scrollProgress"></div>
-
-<!-- CUSTOM CURSOR -->
-<div class="cursor-dot"  id="cursorDot"></div>
+<div class="cursor-dot" id="cursorDot"></div>
 <div class="cursor-ring" id="cursorRing"></div>
 
-<!-- NAV -->
 <nav class="navbar" id="navbar">
   <div class="nav-left">
     <div class="nav-monogram">NR</div>
-    <div class="nav-text">
-      <h1>Nuha Rilwan</h1>
-      <p>Software Engineer</p>
-    </div>
+    <div class="nav-text"><h1>Nuha Rilwan</h1><p>Software Engineer</p></div>
   </div>
   <ul>
     <li><a href="index.html#about">About</a></li>
@@ -36,119 +86,140 @@
   </ul>
 </nav>
 
-<div class="page-wrapper">
-
-  <!-- BACK -->
-  <a class="back-link" href="index.html">
-    <i class="fa-solid fa-arrow-left"></i> Back to Portfolio
-  </a>
-
-  <!-- PROJECT HEADER -->
-  <div class="project-header">
-    <div class="project-eyebrow">AI / Final Year Project</div>
-    <h1>Membership Management System</h1>
-    <p class="subtitle">
-      A comprehensive membership management system designed to streamline the process of managing member information, subscriptions, and communications for organizations.
-    </p>
-    <div class="header-meta">
-      <span class="meta-chip"><i class="fa-solid fa-user"></i> Group Project</span>
+<!-- HERO -->
+<div class="project-hero">
+  <div class="project-hero-orb1"></div>
+  <div class="project-hero-orb2"></div>
+  <div class="project-hero-content">
+    <a class="back-link" href="index.html" style="margin-bottom:32px;display:inline-flex;"><i class="fa-solid fa-arrow-left"></i> Back to Portfolio</a>
+    <div class="project-hero-eyebrow">Java · Spring Boot · Backend Systems</div>
+    <h1 class="project-hero-title">Membership <em>Management System</em></h1>
+    <p class="project-hero-sub">A structured backend web application for managing member records — built with Spring Boot, layered architecture, and MySQL, demonstrating RESTful API design and enterprise patterns.</p>
+    <div class="project-hero-meta">
+      <span class="meta-chip"><i class="fa-solid fa-user"></i> Personal Project</span>
       <span class="meta-chip"><i class="fa-solid fa-calendar"></i> 2025</span>
-      <span class="meta-chip"><i class="fa-solid fa-graduation-cap"></i> First Year Project</span>
+      <span class="meta-chip"><i class="fa-brands fa-java"></i> Java</span>
+    </div>
+  </div>
+</div>
+
+<div class="project-content">
+
+  <!-- QUICK ACTIONS -->
+  <div style="display:flex;gap:12px;margin-bottom:48px;flex-wrap:wrap;">
+    <a href="https://github.com/nuhaaaaaaa24/membershipManagementSystem" target="_blank" class="project-btn primary"><i class="fa-brands fa-github"></i> View on GitHub</a>
+  </div>
+
+  <!-- ABOUT -->
+  <div class="section-divider reveal">About the Project</div>
+  <div style="display:grid;grid-template-columns:1.3fr 1fr;gap:16px;" class="reveal reveal-delay-1">
+    <div class="detail-card desc-card">
+      <div class="card-label"><i class="fa-solid fa-file-lines"></i> Overview</div>
+      <p>The Membership Management System is a backend web application built to efficiently manage member records using a clean, scalable Spring Boot architecture. It supports full CRUD operations — add, view, update, and delete member data through a structured REST API.</p>
+      <p>The application follows a strict layered architecture separating the controller, service, and repository layers. It integrates with MySQL for persistent storage and demonstrates key enterprise backend patterns including dependency injection, JPA entities, and RESTful design.</p>
+      <p>Built as a Java certification project, it serves as a production-ready foundation that could be extended with authentication, role-based access, and reporting features.</p>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:12px;">
+      <div class="detail-card" style="padding:24px;">
+        <div class="card-label" style="margin-bottom:16px;"><i class="fa-solid fa-circle-info"></i> Quick Facts</div>
+        <div style="display:flex;flex-direction:column;gap:0;">
+          <div style="display:flex;justify-content:space-between;align-items:center;padding:11px 0;border-bottom:1px solid var(--border);"><span style="font-family:var(--mono);font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-muted);">Type</span><span style="font-size:12px;color:var(--text-secondary);">Java Certification Project</span></div>
+          <div style="display:flex;justify-content:space-between;align-items:center;padding:11px 0;border-bottom:1px solid var(--border);"><span style="font-family:var(--mono);font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-muted);">Domain</span><span style="font-size:12px;color:var(--text-secondary);">Web Development</span></div>
+          <div style="display:flex;justify-content:space-between;align-items:center;padding:11px 0;border-bottom:1px solid var(--border);"><span style="font-family:var(--mono);font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-muted);">Year</span><span style="font-size:12px;color:var(--text-secondary);">2025</span></div>
+          <div style="display:flex;justify-content:space-between;align-items:center;padding:11px 0;"><span style="font-family:var(--mono);font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-muted);">Focus</span><span style="font-size:12px;color:var(--text-secondary);">CRUD / Backend Architecture</span></div>
+        </div>
+      </div>
+      <div class="detail-card" style="padding:24px;">
+        <div class="card-label" style="margin-bottom:14px;"><i class="fa-solid fa-lightbulb"></i> Skills</div>
+        <div class="skills-grid">
+          <div class="skill-pill"><i class="fa-brands fa-java"></i> Java</div>
+          <div class="skill-pill"><i class="fa-solid fa-leaf"></i> Spring Boot</div>
+          <div class="skill-pill"><i class="fa-solid fa-database"></i> MySQL</div>
+          <div class="skill-pill"><i class="fa-solid fa-code"></i> REST API</div>
+          <div class="skill-pill"><i class="fa-solid fa-layer-group"></i> JPA / Hibernate</div>
+          <div class="skill-pill"><i class="fa-brands fa-html5"></i> HTML / CSS</div>
+        </div>
+      </div>
     </div>
   </div>
 
-  <!-- ROW 1: Description + Skills -->
-  <div class="detail-grid">
-
-    <div class="detail-card desc-card reveal">
-      <div class="card-label"><i class="fa-solid fa-file-lines"></i> About the Project</div>
-      <p>
-        The Membership Management System is a backend web application designed to efficiently manage member records using a structured and scalable architecture. It supports full CRUD operations, allowing administrators to add, view, update, and delete member data.
-      </p>
-      <p>
-        Built with Spring Boot, the application follows a layered architecture that separates the controller, service, and data access layers. It integrates with a MySQL database for persistent storage and demonstrates key backend concepts such as RESTful API design and database integration.
-      </p>
-      <p>
-        While focused on core functionality, the system provides a foundation for future features like authentication, role-based access, and reporting.
-      </p>
+  <!-- KEY FEATURES -->
+  <div class="section-divider reveal">Key Features</div>
+  <div class="features-grid reveal reveal-delay-1">
+    <div class="feature-card">
+      <div class="feature-icon"><i class="fa-solid fa-layer-group"></i></div>
+      <h4>Layered Architecture</h4>
+      <p>Strict separation of Controller, Service, and Repository layers — following Spring Boot best practices for maintainable, testable code.</p>
     </div>
-
-    <div class="detail-card reveal reveal-delay-1">
-      <div class="card-label"><i class="fa-solid fa-lightbulb"></i> Skills Learned</div>
-      <div class="skills-grid">
-        <div class="skill-pill"><i class="fa-brands fa-java"></i> Java</div>
-        <div class="skill-pill"><i class="fa-solid fa-server"></i> Spring Boot</div>
-        <div class="skill-pill"><i class="fa-solid fa-database"></i> MySQL</div>
-        <div class="skill-pill"><i class="fa-brands fa-html5"></i> HTML </div>
-        <div class="skill-pill"><i class="fa-brands fa-css3-alt"></i> CSS</div>
-        <div class="skill-pill"><i class="fa-solid fa-code"></i> RESTful API Development</div>
-        <div class="skill-pill"><i class="fa-solid fa-database"></i> Database Design</div>
-      </div>
+    <div class="feature-card">
+      <div class="feature-icon"><i class="fa-solid fa-arrows-rotate"></i></div>
+      <h4>Full CRUD Operations</h4>
+      <p>Complete member lifecycle management — create, read, update, and delete member records via clean REST endpoints.</p>
     </div>
-
+    <div class="feature-card">
+      <div class="feature-icon"><i class="fa-solid fa-database"></i></div>
+      <h4>MySQL Integration</h4>
+      <p>Persistent storage with JPA and Hibernate ORM — database schema managed through Spring Data JPA entity mapping.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon"><i class="fa-solid fa-code"></i></div>
+      <h4>RESTful API Design</h4>
+      <p>Clean REST API with proper HTTP methods, status codes, and response structure — built to be consumed by any frontend.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon"><i class="fa-solid fa-syringe"></i></div>
+      <h4>Dependency Injection</h4>
+      <p>Spring's IoC container manages all component lifecycles — services and repositories autowired throughout the application context.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon"><i class="fa-solid fa-expand"></i></div>
+      <h4>Extensible Foundation</h4>
+      <p>Architecture designed to easily accommodate future features — authentication, role-based access, reporting, and email notifications.</p>
+    </div>
   </div>
 
-  <!-- ROW 2: Links + Quick Facts -->
-  <div class="detail-grid reveal reveal-delay-2">
+  <!-- TECH STACK -->
+  <div class="section-divider reveal">Tech Stack</div>
+  <div class="tech-visual-grid reveal reveal-delay-1">
+    <div class="tech-visual-card"><i class="fa-brands fa-java"></i><div class="tech-name">Java</div><div class="tech-role">Language</div></div>
+    <div class="tech-visual-card"><i class="fa-solid fa-leaf"></i><div class="tech-name">Spring Boot</div><div class="tech-role">Framework</div></div>
+    <div class="tech-visual-card"><i class="fa-solid fa-database"></i><div class="tech-name">MySQL</div><div class="tech-role">Database</div></div>
+    <div class="tech-visual-card"><i class="fa-solid fa-layer-group"></i><div class="tech-name">JPA / Hibernate</div><div class="tech-role">ORM</div></div>
+    <div class="tech-visual-card"><i class="fa-brands fa-html5"></i><div class="tech-name">HTML / CSS</div><div class="tech-role">Frontend</div></div>
+    <div class="tech-visual-card"><i class="fa-brands fa-github"></i><div class="tech-name">GitHub</div><div class="tech-role">Version Control</div></div>
+  </div>
 
-    <div class="detail-card">
-      <div class="card-label"><i class="fa-solid fa-link"></i> Project Links</div>
-      <div class="links-row" style="margin-bottom: 36px;">
-        <a href="https://github.com/nuhaaaaaaa24/membershipManagementSystem" target="_blank" class="project-btn primary">
-          <i class="fa-brands fa-github"></i> View on GitHub
-        </a>
-      </div>
-
-      <div class="card-label" style="margin-top: 8px;"><i class="fa-solid fa-circle-info"></i> Quick Facts</div>
-      <div style="display:flex; flex-direction:column; gap:14px;">
-        <div style="display:flex; justify-content:space-between; align-items:center; padding-bottom:12px; border-bottom: 0.5px solid rgba(122,145,96,0.15);">
-          <span style="font-size:11px; letter-spacing:0.08em; text-transform:uppercase; color:rgba(44,36,32,0.38);">Type</span>
-          <span style="font-size:13px; color:rgba(44,36,32,0.72);">Java certification project</span>
-        </div>
-        <div style="display:flex; justify-content:space-between; align-items:center; padding-bottom:12px; border-bottom: 0.5px solid rgba(122,145,96,0.15);">
-          <span style="font-size:11px; letter-spacing:0.08em; text-transform:uppercase; color:rgba(44,36,32,0.38);">Domain</span>
-          <span style="font-size:13px; color:rgba(44,36,32,0.72);">Web Development</span>
-        </div>
-        <div style="display:flex; justify-content:space-between; align-items:center; padding-bottom:12px; border-bottom: 0.5px solid rgba(122,145,96,0.15);">
-          <span style="font-size:11px; letter-spacing:0.08em; text-transform:uppercase; color:rgba(44,36,32,0.38);">Stack</span>
-          <span style="font-size:13px; color:rgba(44,36,32,0.72);">Java · Spring Boot · MySQL · HTML · CSS · JavaScript</span>
-        </div>
-        <div style="display:flex; justify-content:space-between; align-items:center;">
-          <span style="font-size:11px; letter-spacing:0.08em; text-transform:uppercase; color:rgba(44,36,32,0.38);">Focus</span>
-          <span style="font-size:13px; color:rgba(44,36,32,0.72);">CRUD Operations</span>
-        </div>
-      </div>
+  <!-- CHALLENGES -->
+  <div class="section-divider reveal">Challenges &amp; Solutions</div>
+  <div class="challenges-list reveal reveal-delay-1">
+    <div class="challenge-item">
+      <div class="challenge-problem"><p>Mapping Java entity relationships to the MySQL schema cleanly while avoiding N+1 query issues with JPA lazy loading.</p></div>
+      <div class="challenge-solution"><p>Used fetch type strategies carefully — LAZY loading for collections and EAGER for mandatory associations — and validated queries in the repository layer.</p></div>
     </div>
-
-    <!-- Next project nudge -->
-    <div class="detail-card" style="display:flex; flex-direction:column; justify-content:center; align-items:flex-start; gap:18px;">
-      <div class="card-label"><i class="fa-solid fa-arrow-right"></i> Next Project</div>
-      <p style="font-size:13px; font-weight:300; color:rgba(44,36,32,0.5); line-height:1.8;">
-        Want to see more? Check out AquaTurtle — an educational website promoting marine conservation and awareness.
-      </p>
-      <a href="project-aquaturtle.html" class="project-btn primary">
-        View AquaTurtle <i class="fa-solid fa-arrow-right"></i>
-      </a>
-      <a href="index.html#projects" class="project-btn ghost">
-        All Projects
-      </a>
+    <div class="challenge-item">
+      <div class="challenge-problem"><p>Structuring the service layer to remain thin and not bleed business logic into controllers or repositories.</p></div>
+      <div class="challenge-solution"><p>Defined clear interfaces for each service, keeping controllers as thin HTTP adapters and pushing all validation and transformation logic into dedicated service methods.</p></div>
     </div>
+  </div>
 
+  <!-- NEXT PROJECT -->
+  <div class="next-project-banner reveal">
+    <div class="next-project-orb"></div>
+    <div>
+      <div style="font-family:var(--mono);font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:var(--neon-green);margin-bottom:12px;opacity:0.8;"><i class="fa-solid fa-arrow-right" style="margin-right:6px;"></i> Next Project</div>
+      <h3>Aqua<em>Turtle</em></h3>
+      <p>An educational platform raising awareness about Sri Lanka's sea turtle species — built in HTML, CSS, and JavaScript during my first year.</p>
+    </div>
+    <div class="next-btns">
+      <a href="project-aquaturtle.html" class="project-btn primary">View AquaTurtle <i class="fa-solid fa-arrow-right"></i></a>
+      <a href="index.html#projects" class="project-btn ghost">All Projects</a>
+    </div>
   </div>
 
 </div>
 
-<!-- LIGHTBOX -->
-<div class="lightbox" id="lightbox" onclick="closeLightbox()">
-  <button class="lightbox-close"><i class="fa-solid fa-xmark"></i></button>
-  <img id="lightbox-img" src="" alt="">
-</div>
-
-<!-- FOOTER -->
 <footer>
-  <div class="footer-left">
-    <p>&copy; 2026 Nuha Rilwan. All rights reserved.</p>
-  </div>
+  <div class="footer-left"><p>&copy; 2026 Nuha Rilwan. All rights reserved.</p></div>
   <div class="footer-links">
     <a href="mailto:nuharilwan2424@gmail.com"><i class="fa-solid fa-envelope"></i> Email</a>
     <a href="https://github.com/nuhaaaaaaa24" target="_blank"><i class="fa-brands fa-github"></i> GitHub</a>
@@ -157,46 +228,12 @@
 </footer>
 
 <script>
-/* Custom Cursor */
-const dot  = document.getElementById('cursorDot');
-const ring = document.getElementById('cursorRing');
+const dot = document.getElementById('cursorDot'), ring = document.getElementById('cursorRing');
 let rx = 0, ry = 0;
-document.addEventListener('mousemove', e => {
-  dot.style.left  = e.clientX + 'px';
-  dot.style.top   = e.clientY + 'px';
-  rx += (e.clientX - rx) * 0.12;
-  ry += (e.clientY - ry) * 0.12;
-  ring.style.left = rx + 'px';
-  ring.style.top  = ry + 'px';
-});
-
-/* Scroll Progress */
-const progressBar = document.getElementById('scrollProgress');
-window.addEventListener('scroll', () => {
-  const pct = window.scrollY / (document.body.scrollHeight - window.innerHeight) * 100;
-  progressBar.style.width = pct + '%';
-  document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 80);
-});
-
-/* Scroll Reveal */
-const revealEls = document.querySelectorAll('.reveal');
-const obs = new IntersectionObserver(entries => {
-  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
-}, { threshold: 0.1 });
-revealEls.forEach(el => obs.observe(el));
-
-/* Lightbox */
-function openLightbox(el) {
-  const img = el.querySelector('img');
-  if (!img) return;
-  document.getElementById('lightbox-img').src = img.src;
-  document.getElementById('lightbox').classList.add('open');
-}
-function closeLightbox() {
-  document.getElementById('lightbox').classList.remove('open');
-}
-document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+document.addEventListener('mousemove', e => { dot.style.left = e.clientX+'px'; dot.style.top = e.clientY+'px'; rx += (e.clientX-rx)*0.12; ry += (e.clientY-ry)*0.12; ring.style.left = rx+'px'; ring.style.top = ry+'px'; });
+window.addEventListener('scroll', () => { document.getElementById('scrollProgress').style.width = (window.scrollY/(document.body.scrollHeight-window.innerHeight)*100)+'%'; document.getElementById('navbar').classList.toggle('scrolled', window.scrollY>80); });
+const obs = new IntersectionObserver(entries => entries.forEach(e => { if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);} }), {threshold:0.1});
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
 </script>
-
 </body>
 </html>

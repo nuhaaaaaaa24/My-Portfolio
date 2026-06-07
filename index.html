@@ -7,7 +7,6 @@
 
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  <link rel="stylesheet" href="css/variables.css">
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
@@ -38,6 +37,7 @@
 
 <!-- ═══ HERO ═══ -->
 <section class="hero" id="home">
+  <div class="hero-orbs"></div>
   <div class="hero-content">
 
     <div class="hero-eyebrow">Software Engineering Portfolio</div>
@@ -89,9 +89,7 @@
 
 <!-- ═══ ABOUT ═══ -->
 <section id="about">
-
   <div class="about-grid">
-
     <div>
       <div class="section-header reveal">
         <div class="section-label">Who I Am</div>
@@ -107,7 +105,6 @@
       </div>
     </div>
   </div>
-
 </section>
 
 <!-- ═══ PROJECTS ═══ -->
@@ -123,16 +120,13 @@
     <!-- SignBridge -->
     <div class="project-card reveal reveal-delay-1">
       <div class="project-img-wrap">
-        <img src="assets/images/projects/signbridge.jpg" alt="SignBridge"
-             onerror="this.style.display='none'">
+        <img src="assets/images/projects/signbridge.jpg" alt="SignBridge" onerror="this.style.display='none'">
         <div class="project-img-overlay"></div>
         <span class="project-type-badge">Group · Final Year</span>
       </div>
       <div class="project-body">
         <h3 class="project-title">SignBridge</h3>
-        <p class="project-desc">
-          Real-time sign language translation using CNN-based gesture recognition. Detects hand gestures through a camera feed and converts them into readable text — built for accessibility and HCI.
-        </p>
+        <p class="project-desc">Real-time sign language translation using CNN-based gesture recognition. Detects hand gestures through a camera feed and converts them into readable text — built for accessibility and HCI.</p>
         <div class="tech-stack">
           <span><i class="fa-brands fa-python"></i> Python</span>
           <span><i class="fa-solid fa-brain"></i> CNN / AI</span>
@@ -140,12 +134,8 @@
           <span><i class="fa-brands fa-css3-alt"></i> CSS</span>
         </div>
         <div class="project-footer">
-          <a href="https://github.com/nuhaaaaaaa24/SignBridge" target="_blank" class="project-link primary">
-            <i class="fa-brands fa-github"></i> GitHub
-          </a>
-          <a href="project-signbridge.html" class="project-link">
-            View Details <i class="fa-solid fa-arrow-right"></i>
-          </a>
+          <a href="https://github.com/nuhaaaaaaa24/SignBridge" target="_blank" class="project-link primary"><i class="fa-brands fa-github"></i> GitHub</a>
+          <a href="project-signbridge.html" class="project-link">View Details <i class="fa-solid fa-arrow-right"></i></a>
         </div>
       </div>
     </div>
@@ -153,28 +143,21 @@
     <!-- BookBliss -->
     <div class="project-card reveal reveal-delay-2">
       <div class="project-img-wrap">
-        <img src="assets/images/projects/bookbliss.jpg" alt="BookBliss"
-             onerror="this.style.display='none'">
+        <img src="assets/images/projects/bookbliss.jpg" alt="BookBliss" onerror="this.style.display='none'">
         <div class="project-img-overlay"></div>
         <span class="project-type-badge">Full Stack Web</span>
       </div>
       <div class="project-body">
         <h3 class="project-title">BookBliss</h3>
-        <p class="project-desc">
-          A community platform for readers to connect, share, and track their reading journey. Users join discussions, participate in challenges, and engage in a shared literary ecosystem.
-        </p>
+        <p class="project-desc">A community platform for readers to connect, share, and track their reading journey. Users join discussions, participate in challenges, and engage in a shared literary ecosystem.</p>
         <div class="tech-stack">
           <span><i class="fa-brands fa-php"></i> PHP</span>
           <span><i class="fa-solid fa-server"></i> Laravel</span>
           <span><i class="fa-solid fa-database"></i> MySQL</span>
         </div>
         <div class="project-footer">
-          <a href="https://github.com/nuhaaaaaaa24/BookBliss" target="_blank" class="project-link primary">
-            <i class="fa-brands fa-github"></i> GitHub
-          </a>
-          <a href="project-bookbliss.html" class="project-link">
-            View Details <i class="fa-solid fa-arrow-right"></i>
-          </a>
+          <a href="https://github.com/nuhaaaaaaa24/BookBliss" target="_blank" class="project-link primary"><i class="fa-brands fa-github"></i> GitHub</a>
+          <a href="project-bookbliss.html" class="project-link">View Details <i class="fa-solid fa-arrow-right"></i></a>
         </div>
       </div>
     </div>
@@ -182,16 +165,13 @@
     <!-- Budgetly -->
     <div class="project-card reveal reveal-delay-3">
       <div class="project-img-wrap">
-        <img src="assets/images/projects/budgetly.jpg" alt="Budgetly"
-             onerror="this.style.display='none'">
+        <img src="assets/images/projects/budgetly.jpg" alt="Budgetly" onerror="this.style.display='none'">
         <div class="project-img-overlay"></div>
         <span class="project-type-badge">MERN Stack</span>
       </div>
       <div class="project-body">
         <h3 class="project-title">Budgetly</h3>
-        <p class="project-desc">
-          Smart expense tracker built on the MERN stack. Helps users track income, manage expenses, and visualize spending patterns through a clean, data-driven dashboard.
-        </p>
+        <p class="project-desc">Smart expense tracker built on the MERN stack. Helps users track income, manage expenses, and visualize spending patterns through a clean, data-driven dashboard.</p>
         <div class="tech-stack">
           <span><i class="fa-brands fa-react"></i> React</span>
           <span><i class="fa-brands fa-node-js"></i> Node.js</span>
@@ -199,41 +179,30 @@
           <span><i class="fa-solid fa-database"></i> MongoDB</span>
         </div>
         <div class="project-footer">
-          <a href="https://github.com/nuhaaaaaaa24/budgetly" target="_blank" class="project-link primary">
-            <i class="fa-brands fa-github"></i> GitHub
-          </a>
-          <a href="project-budgetly.html" class="project-link">
-            View Details <i class="fa-solid fa-arrow-right"></i>
-          </a>
+          <a href="https://github.com/nuhaaaaaaa24/budgetly" target="_blank" class="project-link primary"><i class="fa-brands fa-github"></i> GitHub</a>
+          <a href="project-budgetly.html" class="project-link">View Details <i class="fa-solid fa-arrow-right"></i></a>
         </div>
       </div>
     </div>
 
-    <!-- Membership Management -->
+    <!-- Membership -->
     <div class="project-card reveal reveal-delay-2">
       <div class="project-img-wrap">
-        <img src="assets/images/projects/member.jpg" alt="Membership Management System"
-             onerror="this.style.display='none'">
+        <img src="assets/images/projects/member.jpg" alt="Membership Management System" onerror="this.style.display='none'">
         <div class="project-img-overlay"></div>
         <span class="project-type-badge">Java · Spring Boot</span>
       </div>
       <div class="project-body">
         <h3 class="project-title">Membership Management System</h3>
-        <p class="project-desc">
-          Clean, well-structured membership platform in Java and Spring Boot. Handles member records, admin features, and full CRUD operations through a structured backend architecture.
-        </p>
+        <p class="project-desc">Clean, well-structured membership platform in Java and Spring Boot. Handles member records, admin features, and full CRUD operations through a structured backend architecture.</p>
         <div class="tech-stack">
           <span><i class="fa-brands fa-java"></i> Java</span>
           <span><i class="fa-solid fa-leaf"></i> Spring Boot</span>
           <span><i class="fa-solid fa-database"></i> MySQL</span>
         </div>
         <div class="project-footer">
-          <a href="https://github.com/nuhaaaaaaa24/membershipManagementSystem" target="_blank" class="project-link primary">
-            <i class="fa-brands fa-github"></i> GitHub
-          </a>
-          <a href="project-membership.html" class="project-link">
-            View Details <i class="fa-solid fa-arrow-right"></i>
-          </a>
+          <a href="https://github.com/nuhaaaaaaa24/membershipManagementSystem" target="_blank" class="project-link primary"><i class="fa-brands fa-github"></i> GitHub</a>
+          <a href="project-membership.html" class="project-link">View Details <i class="fa-solid fa-arrow-right"></i></a>
         </div>
       </div>
     </div>
@@ -241,28 +210,21 @@
     <!-- AquaTurtle -->
     <div class="project-card reveal reveal-delay-3">
       <div class="project-img-wrap">
-        <img src="assets/images/projects/turtle.jpg" alt="AquaTurtle"
-             onerror="this.style.display='none'">
+        <img src="assets/images/projects/turtle.jpg" alt="AquaTurtle" onerror="this.style.display='none'">
         <div class="project-img-overlay"></div>
         <span class="project-type-badge">Web · First Year</span>
       </div>
       <div class="project-body">
         <h3 class="project-title">AquaTurtle</h3>
-        <p class="project-desc">
-          Educational platform raising awareness about Sri Lanka's turtle species — their habitats, life cycles, and conservation efforts. Highlights ongoing protection initiatives across the island.
-        </p>
+        <p class="project-desc">Educational platform raising awareness about Sri Lanka's turtle species — their habitats, life cycles, and conservation efforts. Highlights ongoing protection initiatives across the island.</p>
         <div class="tech-stack">
           <span><i class="fa-brands fa-html5"></i> HTML</span>
           <span><i class="fa-brands fa-css3-alt"></i> CSS</span>
           <span><i class="fa-brands fa-js"></i> JavaScript</span>
         </div>
         <div class="project-footer">
-          <a href="https://github.com/nuhaaaaaaa24/AquaTurtle" target="_blank" class="project-link primary">
-            <i class="fa-brands fa-github"></i> GitHub
-          </a>
-          <a href="project-aquaturtle.html" class="project-link">
-            View Details <i class="fa-solid fa-arrow-right"></i>
-          </a>
+          <a href="https://github.com/nuhaaaaaaa24/AquaTurtle" target="_blank" class="project-link primary"><i class="fa-brands fa-github"></i> GitHub</a>
+          <a href="project-aquaturtle.html" class="project-link">View Details <i class="fa-solid fa-arrow-right"></i></a>
         </div>
       </div>
     </div>
@@ -312,7 +274,7 @@
         <div class="skill-chip"><i class="fa-brands fa-git-alt"></i><span>Git</span></div>
         <div class="skill-chip"><i class="fa-brands fa-github"></i><span>GitHub</span></div>
         <div class="skill-chip"><i class="fa-solid fa-vial"></i><span>pytest</span></div>
-        <div class="skill-chip"><i class="fa-brand fa-selenium"></i><span>Selenium</span></div>
+        <div class="skill-chip"><i class="fa-solid fa-robot"></i><span>Selenium</span></div>
         <div class="skill-chip"><i class="fa-solid fa-brain"></i><span>Machine Learning</span></div>
       </div>
     </div>
@@ -322,9 +284,7 @@
 
 <!-- ═══ CONTACT ═══ -->
 <section id="contact">
-  <div class="section-label reveal" style="justify-content:center;">
-    Let's Connect
-  </div>
+  <div class="section-label reveal" style="justify-content:center;">Let's Connect</div>
 
   <h2 class="contact-heading reveal reveal-delay-1">
     Open to <em>opportunities</em>
@@ -354,6 +314,11 @@
   <div class="footer-left">
     <p>&copy; 2026 Nuha Rilwan. All rights reserved.</p>
   </div>
+  <div class="footer-links">
+    <a href="mailto:nuharilwan2424@gmail.com"><i class="fa-solid fa-envelope"></i> Email</a>
+    <a href="https://github.com/nuhaaaaaaa24" target="_blank"><i class="fa-brands fa-github"></i> GitHub</a>
+    <a href="https://www.linkedin.com/in/nuharilwan/" target="_blank"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
+  </div>
 </footer>
 
 <script>
@@ -368,16 +333,7 @@ document.addEventListener('mousemove', e => {
   ry += (e.clientY - ry) * 0.12;
   ring.style.left = rx + 'px';
   ring.style.top  = ry + 'px';
-  requestAnimationFrame(() => {
-    rx += (e.clientX - rx) * 0.12;
-    ry += (e.clientY - ry) * 0.12;
-    ring.style.left = rx + 'px';
-    ring.style.top  = ry + 'px';
-  });
 });
-(function loop() {
-  requestAnimationFrame(loop);
-})();
 
 /* ── Scroll Progress ── */
 const progressBar = document.getElementById('scrollProgress');
@@ -418,14 +374,11 @@ const revealObs = new IntersectionObserver(entries => {
 }, { threshold: 0.12 });
 revealEls.forEach(el => revealObs.observe(el));
 
-/* ── Smooth scroll for anchor links ── */
+/* ── Smooth scroll ── */
 document.querySelectorAll('a[href^="#"]').forEach(a => {
   a.addEventListener('click', e => {
     const target = document.querySelector(a.getAttribute('href'));
-    if (target) {
-      e.preventDefault();
-      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
+    if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
   });
 });
 </script>
