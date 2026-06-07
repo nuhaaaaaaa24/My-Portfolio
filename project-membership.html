@@ -49,6 +49,12 @@
     .challenge-solution { padding: 22px 24px; }
     .challenge-solution::before { content: 'SOLUTION'; display: block; font-family: var(--mono); font-size: 9px; letter-spacing: 0.22em; color: var(--neon-green); margin-bottom: 10px; opacity: 0.7; }
     .challenge-problem p, .challenge-solution p { font-size: 13px; font-weight: 300; color: var(--text-secondary); line-height: 1.8; }
+    .screenshots-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
+    .screenshot-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 4px; overflow: hidden; cursor: pointer; transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s; }
+    .screenshot-card:hover { border-color: rgba(0,255,136,0.25); transform: translateY(-4px); box-shadow: 0 12px 32px rgba(0,0,0,0.5), 0 0 16px var(--glow-green); }
+    .screenshot-card img { width: 100%; height: 180px; object-fit: cover; display: block; filter: brightness(0.85); transition: filter 0.3s, transform 0.5s; }
+    .screenshot-card:hover img { filter: brightness(0.7); transform: scale(1.04); }
+    .screenshot-card-label { font-family: var(--mono); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-muted); padding: 10px 14px; background: var(--bg-hover); border-top: 1px solid var(--border); }
     .next-project-banner { background: linear-gradient(135deg, rgba(0,255,136,0.04) 0%, rgba(0,200,255,0.04) 100%); border: 1px solid rgba(0,255,136,0.12); border-radius: 4px; padding: 40px 44px; display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; position: relative; overflow: hidden; margin-top: 56px; }
     .next-project-banner::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 1px; background: linear-gradient(90deg, var(--neon-green), var(--neon-blue), transparent); }
     .next-project-orb { position: absolute; right: -60px; top: -60px; width: 220px; height: 220px; border-radius: 50%; background: radial-gradient(circle, rgba(0,200,255,0.07) 0%, transparent 70%); pointer-events: none; }
@@ -199,6 +205,22 @@
     <div class="challenge-item">
       <div class="challenge-problem"><p>Structuring the service layer to remain thin and not bleed business logic into controllers or repositories.</p></div>
       <div class="challenge-solution"><p>Defined clear interfaces for each service, keeping controllers as thin HTTP adapters and pushing all validation and transformation logic into dedicated service methods.</p></div>
+    </div>
+  </div>
+
+    <div class="section-divider reveal">Screenshots</div>
+  <div class="screenshots-grid reveal reveal-delay-1">
+    <div class="screenshot-card" onclick="openLightbox(this)">
+      <img src="assets/images/projects/membership/login.png" alt="Login">
+      <div class="screenshot-card-label">Login</div>
+    </div>
+    <div class="screenshot-card" onclick="openLightbox(this)">
+      <img src="assets/images/projects/membership/dashboard.png" alt="Dashboard">
+      <div class="screenshot-card-label">Register</div>
+    </div>
+    <div class="screenshot-card" onclick="openLightbox(this)">
+      <img src="assets/images/projects/membership/addnew.png" alt="Add new member">
+      <div class="screenshot-card-label">Dashboard</div>
     </div>
   </div>
 
